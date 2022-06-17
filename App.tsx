@@ -21,11 +21,19 @@ export default function App() {
         <Route path="/bbcb/pnp">
           <BeastybarCabbages group={5} layout={PnP8654} />
         </Route>
+        <Route path="/bbcb/tts">
+          <BeastybarCabbages
+            group={56}
+            layout={createTTSLayout(8, 7, 56, 88)}
+            withBacks
+          />
+        </Route>
         <Route>
           <div style={{ display: 'flex', flexDirection: 'column' }}>
             <Link to="/mfgc/pnp">猫妃狗臣pnp</Link>
             <Link to="/mfgc/tts">猫妃狗臣tts</Link>
             <Link to="/bbcb/pnp">抢菜难pnp</Link>
+            <Link to="/bbcb/tts">抢菜难tts</Link>
           </div>
         </Route>
       </Switch>

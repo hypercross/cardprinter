@@ -1,5 +1,4 @@
 import React = require('react');
-import { ReactMarkdown } from 'react-markdown/lib/react-markdown';
 import { suspend } from 'suspend-react';
 import { leftjoin, loadNotionDB, repeat } from '../data';
 import { unique } from '../data/unique';
@@ -25,7 +24,7 @@ export function BeastybarCabbages(props: {
       data = props.withBacks
         ? [
             ...data,
-            ...unique(data as any, '卡背').map((one) => ({
+            ...unique(data as any, '颜色').map((one) => ({
               ...one,
               variant: 'back',
             })),
@@ -58,7 +57,7 @@ function Card(props: { item: any; variant: string }) {
 
 function CardFront(props: any) {
   return (
-    <div className="card-frame bbcb">
+    <div className="card-frame bbcb" style={{ '--color': props['颜色'] }}>
       <div className="card-layer prop-印象图">
         <img src={props['印象图']} />
       </div>
@@ -69,8 +68,9 @@ function CardFront(props: any) {
         <span>{props['点数']}</span>
       </div>
 
-      <div className="card-layer prop-规则文字">
-        <ReactMarkdown>{props['规则文字']}</ReactMarkdown>
+      <div className="card-layer prop-规则文字">{props['规则文字']}</div>
+      <div className="card-layer prop-符号">
+        {props['符号'] && <img src={props['符号']} />}
       </div>
     </div>
   );
