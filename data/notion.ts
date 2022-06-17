@@ -41,6 +41,8 @@ export async function loadNotionDB<
           ? prop.url
           : prop.type === 'checkbox'
           ? prop.checkbox
+          : prop.type === 'multi_select'
+          ? prop.multi_select.map((item) => item.name)
           : null;
 
       entry[key as keyof T] = val as T[keyof T];

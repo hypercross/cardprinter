@@ -41,7 +41,7 @@ export function MindbugCatdogs(props: {
 function Card(props: { item: any; variant: string }) {
   if (props.variant === 'back') {
     return (
-      <div className="card-frame">
+      <div className="card-frame mfgc">
         <div className="card-layer">
           <img src={props.item.卡背} style={{ transform: 'rotate(180deg)' }} />
         </div>
@@ -55,7 +55,7 @@ function Card(props: { item: any; variant: string }) {
 function CardFront(props: any) {
   return (
     <div
-      className="card-frame"
+      className="card-frame mfgc"
       style={{ backgroundImage: `url(${props['底图']})` }}
     >
       <div className="card-layer prop-印象图">
