@@ -9,9 +9,11 @@ html {
   margin: 0;
   padding: 0;
 }
-svg {
-  page-break-inside: avoid;
-  display: block;
-  max-width: 100vw;
-  max-height: 100vh;
+@media print {
+  svg {
+    page-break-inside: avoid;
+    display: block;
+    max-width: 100vw;
+    max-height: 100vh;
+  }
 }

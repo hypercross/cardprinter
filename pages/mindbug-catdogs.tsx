@@ -2,10 +2,13 @@ import React = require('react');
 import { ReactMarkdown } from 'react-markdown/lib/react-markdown';
 import { suspend } from 'suspend-react';
 import { leftjoin, loadNotionDB, repeat } from '../data';
-import { PnP8654, Pages } from '../layout';
+import { Pages, LayoutRenderer } from '../layout';
 import './mindbug-catdogs.less';
 
-export function MindbugCatdogs() {
+export function MindbugCatdogs(props: {
+  layout: LayoutRenderer<any>;
+  group: number;
+}) {
   const data = suspend(
     async function () {
       const db1 = await loadNotionDB(
@@ -20,7 +23,7 @@ export function MindbugCatdogs() {
     ['mfgc']
   );
 
-  return <Pages item={Card} layout={PnP8654} content={data} group={5} />;
+  return <Pages item={Card} content={data} {...props} />;
 }
 
 function Card(props: { item: any; variant: string }) {
