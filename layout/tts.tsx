@@ -8,7 +8,10 @@ export function createTTSLayout(
   width: number,
   height: number
 ) {
-  return function ttsLayout<T>(props: { content: T[]; item: ItemRenderer<T> }) {
+  return function ttsLayout<T extends { variant?: string }>(props: {
+    content: T[];
+    item: ItemRenderer<T>;
+  }) {
     const Item = props.item;
     return (
       <svg width={width * cols + 'mm'} height={height * rows + 'mm'}>
@@ -16,12 +19,13 @@ export function createTTSLayout(
           return row.map((item, x) => {
             return (
               <foreignObject
+                key={`${x}-${y}`}
                 width={width + 'mm'}
                 height={height + 'mm'}
                 x={x * width + 'mm'}
                 y={y * height + 'mm'}
               >
-                <Item item={item} />
+                <Item item={item} variant={item.variant} />
               </foreignObject>
             );
           });

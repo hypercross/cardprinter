@@ -17,16 +17,20 @@ export function PnP8654<T>(props: { content: T[]; item: ItemRenderer<T> }) {
           height="2mm"
         />
       ))}
-
-      {[-2.5, -1.5, -0.5, 0.5, 1.5, 2.5].map((x) => (
-        <rect
-          key={x}
-          x={x * lw + 297 / 2 + 'mm'}
-          y="0mm"
-          width="2mm"
-          height="210mm"
-        />
-      ))}
+      <rect
+        key="m1"
+        x="0mm"
+        y={py + 210 / 2 + 'mm'}
+        width="100%"
+        height="2mm"
+      />
+      <rect
+        key="m2"
+        x="0mm"
+        y={-py + 210 / 2 + 'mm'}
+        width="100%"
+        height="2mm"
+      />
 
       {props.content.map((item, i) => (
         <foreignObject
@@ -52,6 +56,16 @@ export function PnP8654<T>(props: { content: T[]; item: ItemRenderer<T> }) {
         >
           <Item item={item} variant="back" />
         </foreignObject>
+      ))}
+
+      {[-2.5, -1.5, -0.5, 0.5, 1.5, 2.5].map((x) => (
+        <rect
+          key={x}
+          x={x * lw + 297 / 2 + 0.9 + 'mm'}
+          y="0mm"
+          width="0.2mm"
+          height="210mm"
+        />
       ))}
     </svg>
   );

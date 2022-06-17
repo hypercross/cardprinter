@@ -11,7 +11,11 @@ export default function App() {
           <MindbugCatdogs group={5} layout={PnP8654} />
         </Route>
         <Route path="/mfgc/tts">
-          <MindbugCatdogs group={50} layout={createTTSLayout(10, 5, 56, 88)} />
+          <MindbugCatdogs
+            group={50}
+            layout={createTTSLayout(10, 5, 56, 88)}
+            withBacks
+          />
         </Route>
         <Route>
           <div style={{ display: 'flex', flexDirection: 'column' }}>

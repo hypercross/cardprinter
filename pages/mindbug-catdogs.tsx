@@ -2,12 +2,14 @@ import React = require('react');
 import { ReactMarkdown } from 'react-markdown/lib/react-markdown';
 import { suspend } from 'suspend-react';
 import { leftjoin, loadNotionDB, repeat } from '../data';
+import { unique } from '../data/unique';
 import { Pages, LayoutRenderer } from '../layout';
 import './mindbug-catdogs.less';
 
 export function MindbugCatdogs(props: {
   layout: LayoutRenderer<any>;
   group: number;
+  withBacks?: boolean;
 }) {
   const data = suspend(
     async function () {
@@ -18,9 +20,19 @@ export function MindbugCatdogs(props: {
         'https://www.notion.so/48cded414fa741589aec6149719b7904'
       );
       const joined = leftjoin('', db1, db2);
-      return repeat(joined as any, '张数');
+      const repeated = repeat(joined as any, '张数');
+      const extended = props.withBacks
+        ? [
+            ...repeated,
+            ...unique(repeated as any, '卡背').map((one) => ({
+              ...one,
+              variant: 'back',
+            })),
+          ]
+        : repeated;
+      return extended;
     },
-    ['mfgc']
+    ['mfgc', props.withBacks]
   );
 
   return <Pages item={Card} content={data} {...props} />;
