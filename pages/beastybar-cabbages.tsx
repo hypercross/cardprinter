@@ -1,6 +1,6 @@
 import React = require('react');
 import { suspend } from 'suspend-react';
-import { leftjoin, loadNotionDB, repeat } from '../data';
+import { leftjoin, loadNotionDB, repeat, toDataURL } from '../data';
 import { unique } from '../data/unique';
 import { Pages, LayoutRenderer } from '../layout';
 import './beastybar-cabbages.less';
@@ -30,6 +30,7 @@ export function BeastybarCabbages(props: {
             })),
           ]
         : data;
+      data.sort((a, b) => a.点数 - b.点数);
       return data;
     },
     ['bbcb', props.withBacks]
@@ -59,7 +60,7 @@ function CardFront(props: any) {
   return (
     <div className="card-frame bbcb" style={{ '--color': props['颜色'] }}>
       <div className="card-layer prop-印象图">
-        <img src={props['印象图']} />
+        <img src={props['印象图']} onLoad={toDataURL} />
       </div>
 
       <div className="card-layer prop-名称">{props['名称']}</div>
