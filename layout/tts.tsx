@@ -47,13 +47,16 @@ export function createTTSLayout(
 
 async function downloadSvg(svg: SVGSVGElement) {
   svg = svg.cloneNode(true) as typeof svg;
+
+  const defs = document.createElement('defs');
+  svg.appendChild(defs);
   const styles = [...document.head.querySelectorAll('style')];
-  for (const style of styles) svg.appendChild(style.cloneNode(true));
+  for (const style of styles) defs.appendChild(style.cloneNode(true));
 
   const xml = new XMLSerializer().serializeToString(svg);
   const datauri = 'data:image/svg+xml,' + encodeURIComponent(xml);
-  downloadURI(datauri, 'cardsheet.svg');
-  return;
+  // downloadURI(datauri, 'cardsheet.svg');
+  // return;
 
   const img = new Image();
   await new Promise<void>((resolve) => {
@@ -62,11 +65,11 @@ async function downloadSvg(svg: SVGSVGElement) {
   });
 
   const canvas = document.createElement('canvas');
-  canvas.width = img.naturalWidth;
-  canvas.height = img.naturalHeight;
+  canvas.width = img.naturalWidth * 2;
+  canvas.height = img.naturalHeight * 2;
   const ctx = canvas.getContext('2d');
 
-  ctx.drawImage(img, 0, 0);
+  ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
 
   const webp = canvas.toDataURL('image/webp');
   downloadURI(webp, 'cardsheet.webp');
