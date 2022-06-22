@@ -60,7 +60,7 @@ function CardFront(props: any) {
   return (
     <div className="card-frame bbcb" style={{ '--color': props['颜色'] }}>
       <div className="card-layer prop-印象图">
-        <img src={props['印象图']} onLoad={toDataURL} />
+        <img src={props['印象图']} onLoad={toDataURL} crossOrigin="anonymous" />
       </div>
 
       <div className="card-layer prop-名称">{props['名称']}</div>
