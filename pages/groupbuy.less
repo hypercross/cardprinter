@@ -1,0 +1,63 @@
+.card-frame.gbuy {
+  background-size: 100%;
+  background-color: var(--color);
+
+  .card-layer {
+    position: absolute;
+    overflow: hidden;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+  }
+
+  .prop-图 {
+    height: 100%;
+  }
+  .prop-名称 {
+    font-size: 5mm;
+    font-weight: 400;
+    font-family: Xiquezhaopaiti;
+    letter-spacing: 2mm;
+    width: 100%;
+    text-align: center;
+    top: 4mm;
+  }
+  .prop-背景 {
+    height: 100%;
+    img {
+      object-fit: cover;
+    }
+  }
+  .prop-效果背景 {
+    bottom: 0;
+    padding: 2mm;
+  }
+  .prop-标题数字图 {
+    padding: 4mm 3mm;
+  }
+  .prop-品类符号 {
+    padding: 16mm 5mm;
+  }
+  .prop-心动数 {
+    font-size: 5mm;
+    width: 100%;
+    top: 10mm;
+    text-align: center;
+  }
+  .prop-特殊效果 {
+    width: calc(100% - 14mm);
+    bottom: 0;
+    height: 26mm;
+    padding: 0 8mm 0 6mm;
+    font-size: 3.2mm;
+    line-height: 5mm;
+    font-family: fangsong;
+  }
+}
+.curved {
+  transform: translateY(var(--drop)) rotate(var(--curve));
+  display: inline-block;
+}

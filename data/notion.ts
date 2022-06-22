@@ -36,7 +36,7 @@ export async function loadNotionDB<
             ? prop.files[0].external.url
             : null
           : prop.type === 'select'
-          ? prop.select!.name
+          ? prop.select?.name
           : prop.type === 'url'
           ? prop.url
           : prop.type === 'checkbox'
