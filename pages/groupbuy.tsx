@@ -42,7 +42,7 @@ function Card(props: { item: any; variant: string }) {
   if (props.variant === 'back') {
     return (
       <div className="card-frame gbuy">
-        <div className="card-layer">
+        <div className="card-layer prop-卡背">
           <img src={props.item.卡背} style={{ transform: 'rotate(180deg)' }} />
         </div>
       </div>
