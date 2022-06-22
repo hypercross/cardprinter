@@ -47,7 +47,12 @@ function Card(props: { item: any; variant: string }) {
           className="card-layer prop-卡背"
           style={{ backgroundColor: props.item.颜色 }}
         >
-          <img src={props.item.卡背} style={{ transform: 'rotate(180deg)' }} />
+          <img
+            src={props.item.卡背}
+            style={{ transform: 'rotate(180deg)' }}
+            onLoad={toDataURL}
+            crossOrigin="anonymous"
+          />
         </div>
       </div>
     );
@@ -71,7 +76,9 @@ function CardFront(props: any) {
 
       <div className="card-layer prop-规则文字">{props['规则文字']}</div>
       <div className="card-layer prop-符号">
-        {props['符号'] && <img src={props['符号']} />}
+        {props['符号'] && (
+          <img src={props['符号']} onLoad={toDataURL} crossOrigin="anonymous" />
+        )}
       </div>
     </div>
   );

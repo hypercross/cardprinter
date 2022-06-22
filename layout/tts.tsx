@@ -17,7 +17,7 @@ export function createTTSLayout(
     const download = React.useCallback(() => downloadSvg(ref.current), [ref]);
     return (
       <React.Fragment>
-        <button onClick={download}>下载png</button>
+        <button onClick={download}>下载svg</button>
         <br />
         <svg
           ref={ref}
@@ -52,7 +52,8 @@ async function downloadSvg(svg: SVGSVGElement) {
 
   const xml = new XMLSerializer().serializeToString(svg);
   const datauri = 'data:image/svg+xml,' + encodeURIComponent(xml);
-  // downloadURI(datauri, 'cardsheet.svg');
+  downloadURI(datauri, 'cardsheet.svg');
+  return;
 
   const img = new Image();
   await new Promise<void>((resolve) => {

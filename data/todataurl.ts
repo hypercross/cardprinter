@@ -8,7 +8,7 @@ export function toDataURL(e: React.SyntheticEvent<HTMLImageElement, Event>) {
 
   const ctx = canvas.getContext('2d');
   ctx.drawImage(img, 0, 0);
-  const dataurl = canvas.toDataURL('image/png');
+  const dataurl = canvas.toDataURL('image/webp');
 
   img.src = dataurl;
 }
