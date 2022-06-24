@@ -41,7 +41,9 @@ export function NoodleRealmCard(props: { item: any; variant?: string }) {
     .replace('$1', '**' + props.item.加成条件.join(', ') + '**')
     .replace('$2', props.item.加分);
   return (
-    <div className="noodle-realm-frame">
+    <div
+      className={`noodle-realm-frame ${props.item.类型} ${props.item.子类型}`}
+    >
       <div className="name">{props.item.名称}</div>
       <div className="type">{props.item.类型}</div>
       <div className="subtype">{props.item.子类型}</div>
