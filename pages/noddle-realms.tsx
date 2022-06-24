@@ -8,7 +8,7 @@ import { ReactMarkdown } from 'react-markdown/lib/react-markdown';
 export function NoodleRealmCards() {
   return (
     <Pages
-      layout={createTTSLayout(7, 8, 56, 88)}
+      layout={createTTSLayout(8, 7, 56, 88)}
       item={NoodleRealmCard}
       content={useNoodleRealmCards()}
       group={56}
@@ -46,7 +46,6 @@ export function NoodleRealmCard(props: { item: any; variant?: string }) {
       <div className="type">{props.item.类型}</div>
       <div className="subtype">{props.item.子类型}</div>
       <div className="score">{props.item.基本分}</div>
-      <div className="bonus">{props.item.加分}</div>
       <div className="explain">
         <ReactMarkdown>{explain}</ReactMarkdown>
       </div>

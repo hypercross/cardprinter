@@ -1,6 +1,37 @@
 .noodle-realm-frame {
   padding: 4mm;
-  * {
-    max-width: calc(100% - 8mm);
+  max-width: calc(100% - 8mm);
+
+  background-color: white;
+  text-align: center;
+
+  .name {
+    font-size: 12mm;
+    font-family: Xiquezhaopaiti;
+    font-weight: bold;
+  }
+
+  .score {
+    font-size: 10mm;
+    font-family: Xiquezhaopaiti;
+    font-weight: bold;
+  }
+
+  .type,
+  .subtype {
+    display: inline-block;
+    font-size: 6mm;
+    position: absolute;
+    top: 32mm;
+    width: 32mm;
+  }
+  .type {
+    left: 2mm;
+  }
+  .subtype {
+    right: 2mm;
+  }
+  .explain {
+    margin: 14mm 4mm 0 4mm;
   }
 }
