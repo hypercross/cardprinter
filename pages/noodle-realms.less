@@ -1,6 +1,7 @@
 .noodle-realm-frame {
   padding: 4mm;
   max-width: calc(100% - 8mm);
+  height: calc(100% - 8mm);
 
   background-color: white;
   text-align: center;
@@ -33,5 +34,22 @@
   }
   .explain {
     margin: 14mm 4mm 0 4mm;
+  }
+
+  &.back {
+    transform: rotate(180deg);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .backname {
+      font-size: 12mm;
+      font-family: Xiquezhaopaiti;
+      font-weight: bold;
+      top: 20mm;
+      letter-spacing: 0.5em;
+      line-height: 2em;
+      text-align: center;
+    }
   }
 }

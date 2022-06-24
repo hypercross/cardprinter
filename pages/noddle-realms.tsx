@@ -16,7 +16,18 @@ export function NoodleRealmCards() {
   );
 }
 
-export function useNoodleRealmCards() {
+export function NoodleRealmPnP() {
+  return (
+    <Pages
+      layout={PnP8654}
+      group={5}
+      content={useNoodleRealmCards()}
+      item={NoodleRealmCard}
+    />
+  );
+}
+
+function useNoodleRealmCards() {
   return suspend(
     async function () {
       let data: any[] = await loadNotionDB(
@@ -28,7 +39,14 @@ export function useNoodleRealmCards() {
   );
 }
 
-export function NoodleRealmCard(props: { item: any; variant?: string }) {
+function NoodleRealmCard(props: { item: any; variant: string }) {
+  if (props.variant === 'back') {
+    return <CardBack {...props} />;
+  } else {
+    return <CardFront {...props} />;
+  }
+}
+function CardFront(props: { item: any }) {
   let template = '';
   if (props.item.类型 === '面条') {
     template = '你的$1牌，每张点数+$2。只有一张面条有效。';
@@ -51,6 +69,13 @@ export function NoodleRealmCard(props: { item: any; variant?: string }) {
       <div className="explain">
         <ReactMarkdown>{explain}</ReactMarkdown>
       </div>
+    </div>
+  );
+}
+function CardBack(props: { item: any }) {
+  return (
+    <div className="noodle-realm-frame back">
+      <div className="backname">小面国度</div>
     </div>
   );
 }

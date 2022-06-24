@@ -4,7 +4,7 @@ import { createTTSLayout, PnP8654 } from './layout';
 import { BeastybarCabbages } from './pages/beastybar-cabbages';
 import { GroupBuy } from './pages/groupbuy';
 import { MindbugCatdogs } from './pages/mindbug-catdogs';
-import { NoodleRealmCards } from './pages/noddle-realms';
+import { NoodleRealmCards, NoodleRealmPnP } from './pages/noddle-realms';
 
 export default function App() {
   return (
@@ -38,8 +38,11 @@ export default function App() {
           <GroupBuy group={5} layout={PnP8654} />
         </Route>
 
-        <Route path="/ndrm/pnp">
+        <Route path="/ndrm/tts">
           <NoodleRealmCards />
+        </Route>
+        <Route path="/ndrm/pnp">
+          <NoodleRealmPnP />
         </Route>
 
         <Route>
@@ -49,6 +52,7 @@ export default function App() {
             <Link to="/bbcb/pnp">抢菜难pnp</Link>
             <Link to="/bbcb/tts">抢菜难tts</Link>
             <Link to="/gbuy/pnp">我的团长pnp</Link>
+            <Link to="/ndrm/tts">小面国度tts</Link>
             <Link to="/ndrm/pnp">小面国度pnp</Link>
           </div>
         </Route>
