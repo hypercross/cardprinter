@@ -6,11 +6,12 @@ import { createTTSLayout, Pages, PnP8654 } from '../layout';
 import { ReactMarkdown } from 'react-markdown/lib/react-markdown';
 
 export function NoodleRealmCards() {
+  const cards = useNoodleRealmCards();
   return (
     <Pages
       layout={createTTSLayout(8, 7, 56, 88)}
       item={NoodleRealmCard}
-      content={useNoodleRealmCards()}
+      content={[...cards, { variant: 'ttsback' }]}
       group={56}
     />
   );
@@ -59,6 +60,8 @@ function useNoodleRealmCards() {
 function NoodleRealmCard(props: { item: any; variant: string }) {
   if (props.variant === 'back') {
     return <CardBack {...props} />;
+  } else if (props.variant === 'ttsback') {
+    return <CardBack {...props} />;
   } else {
     return <CardFront {...props} />;
   }
@@ -96,7 +99,11 @@ function CardFront(props: { item: any }) {
 }
 function CardBack(props: { item: any }) {
   return (
-    <div className="noodle-realm-frame back">
+    <div
+      className={`noodle-realm-frame back ${
+        props.item.variant === 'ttsback' ? 'straight' : ''
+      }`}
+    >
       <div className="backname">下面给你吃🍜</div>
     </div>
   );

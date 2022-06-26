@@ -6,6 +6,9 @@
   background-color: white;
   text-align: center;
 
+  // border: 2mm solid grey;
+  // box-sizing: border-box;
+
   .name {
     margin-left: 8mm;
     font-size: 10mm;
@@ -42,7 +45,9 @@
   }
 
   &.back {
-    transform: rotate(180deg);
+    &:not(.straight) {
+      transform: rotate(180deg);
+    }
     display: flex;
     justify-content: center;
     align-items: center;
