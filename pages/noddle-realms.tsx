@@ -1,6 +1,6 @@
 import React = require('react');
 import { suspend } from 'suspend-react';
-import { loadNotionDB } from '../data';
+import { loadCSV, loadNotionDB } from '../data';
 import './noodle-realms.less';
 import { createTTSLayout, Pages, PnP8654 } from '../layout';
 import { ReactMarkdown } from 'react-markdown/lib/react-markdown';
@@ -28,14 +28,31 @@ export function NoodleRealmPnP() {
 }
 
 function useNoodleRealmCards() {
+  // return suspend(
+  //   async function () {
+  //     let data: any[] = await loadNotionDB(
+  //       'https://www.notion.so/925100d0fbd344a7bedfde10b26df87a'
+  //     );
+  //     return data;
+  //   },
+  //   ['noodlerealm']
+  // );
   return suspend(
     async function () {
-      let data: any[] = await loadNotionDB(
-        'https://www.notion.so/925100d0fbd344a7bedfde10b26df87a'
+      let data: any[] = await loadCSV(
+        'https://docs.google.com/spreadsheets/d/e/2PACX-1vQuzbtPBap-36-EE9lHVTiX00CdPRR8sw8KIRIM-NSRO_b-ILcTePEAUlQbevbDENjc-0GWqn-Gv84q/pub?gid=1441192833&single=true&output=csv'
       );
+      data.forEach((item) => {
+        item.类型 = item.主类型;
+        item.子类型 = item.副类型;
+        item.加分 = item.加成分;
+        item.加成条件 = [item.加成, item.加成2, item.加成3]
+          .map((one) => one.trim())
+          .filter((one) => !!one);
+      });
       return data;
     },
-    ['noodlerealm']
+    ['noodlerealms']
   );
 }
 
@@ -75,7 +92,7 @@ function CardFront(props: { item: any }) {
 function CardBack(props: { item: any }) {
   return (
     <div className="noodle-realm-frame back">
-      <div className="backname">小面国度</div>
+      <div className="backname">下面给你吃🍜</div>
     </div>
   );
 }
