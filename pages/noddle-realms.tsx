@@ -4,6 +4,7 @@ import { loadCSV, loadNotionDB } from '../data';
 import './noodle-realms.less';
 import { createTTSLayout, Pages, PnP8654 } from '../layout';
 import { ReactMarkdown } from 'react-markdown/lib/react-markdown';
+import { leftjoin } from '../data/leftjoin';
 
 export function NoodleRealmCards() {
   const cards = useNoodleRealmCards();
@@ -11,7 +12,7 @@ export function NoodleRealmCards() {
     <Pages
       layout={createTTSLayout(8, 7, 56, 88)}
       item={NoodleRealmCard}
-      content={[...cards, { variant: 'ttsback' }]}
+      content={[...cards, { variant: 'ttsback', ...cards[0] }]}
       group={56}
     />
   );
@@ -42,6 +43,13 @@ function useNoodleRealmCards() {
     async function () {
       let data: any[] = await loadCSV(
         'https://docs.google.com/spreadsheets/d/e/2PACX-1vQuzbtPBap-36-EE9lHVTiX00CdPRR8sw8KIRIM-NSRO_b-ILcTePEAUlQbevbDENjc-0GWqn-Gv84q/pub?gid=1441192833&single=true&output=csv'
+      );
+      data = leftjoin(
+        '',
+        data,
+        await loadNotionDB(
+          'https://www.notion.so/a1b9af84f3d9473d884cd2f415d5bffb'
+        )
       );
       data.forEach((item) => {
         item.类型 = item.主类型;
@@ -98,13 +106,14 @@ function CardFront(props: { item: any }) {
   );
 }
 function CardBack(props: { item: any }) {
+  console.log(props.item);
   return (
     <div
       className={`noodle-realm-frame back ${
         props.item.variant === 'ttsback' ? 'straight' : ''
       }`}
     >
-      <div className="backname">下面给你吃🍜</div>
+      <img src={props.item.卡背} />
     </div>
   );
 }
