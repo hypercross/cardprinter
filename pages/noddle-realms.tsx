@@ -86,6 +86,11 @@ function CardFront(props: { item: any }) {
       <div className="explain">
         <ReactMarkdown>{explain}</ReactMarkdown>
       </div>
+      <div className="bonus">
+        {props.item.加成条件.map((extra) => (
+          <div key={extra}>{extra}</div>
+        ))}
+      </div>
     </div>
   );
 }
