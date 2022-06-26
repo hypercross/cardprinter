@@ -1,6 +1,6 @@
 import React = require('react');
 import { suspend } from 'suspend-react';
-import { loadCSV, loadNotionDB } from '../data';
+import { loadCSV, loadNotionDB, toDataURL } from '../data';
 import './noodle-realms.less';
 import { createTTSLayout, Pages, PnP8654 } from '../layout';
 import { ReactMarkdown } from 'react-markdown/lib/react-markdown';
@@ -113,7 +113,7 @@ function CardBack(props: { item: any }) {
         props.item.variant === 'ttsback' ? 'straight' : ''
       }`}
     >
-      <img src={props.item.卡背} />
+      <img src={props.item.卡背} onLoad={toDataURL} crossOrigin="anonymous" />
     </div>
   );
 }
