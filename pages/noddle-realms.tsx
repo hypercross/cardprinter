@@ -90,6 +90,9 @@ function CardFront(props: { item: any }) {
     <div
       className={`noodle-realm-frame ${props.item.类型} ${props.item.子类型}`}
     >
+      <div className="frame">
+        <img src={props.item.卡框} />
+      </div>
       <div className="name">{props.item.名称}</div>
       <div className="type">{props.item.类型}</div>
       <div className="subtype">{props.item.子类型}</div>
@@ -99,21 +102,21 @@ function CardFront(props: { item: any }) {
       </div>
       <div className="bonus">
         {props.item.加成条件.map((extra) => (
-          <div key={extra}>{extra}</div>
+          <div key={extra}>+{extra}</div>
         ))}
       </div>
     </div>
   );
 }
 function CardBack(props: { item: any }) {
-  console.log(props.item);
+  // console.log(props.item);
   return (
     <div
       className={`noodle-realm-frame back ${
         props.item.variant === 'ttsback' ? 'straight' : ''
       }`}
     >
-      <img src={props.item.卡背} onLoad={toDataURL} crossOrigin="anonymous" />
+      <img src={props.item.卡背} crossOrigin="anonymous" />
     </div>
   );
 }

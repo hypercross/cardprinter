@@ -9,19 +9,31 @@
   // border: 2mm solid grey;
   // box-sizing: border-box;
 
+  .frame {
+    img {
+      width: 54mm;
+      height: 86mm;
+      margin: -3mm -4mm -4mm -4mm;
+    }
+    height: 0;
+  }
+
   .name {
-    margin-left: 8mm;
-    font-size: 10mm;
+    margin-left: 6mm;
+    margin-top: 7mm;
+    font-size: 7mm;
     font-family: Xiquezhaopaiti;
     font-weight: bold;
   }
 
   .score {
-    font-size: 10mm;
+    font-size: 9mm;
     font-family: Xiquezhaopaiti;
     font-weight: bold;
     position: absolute;
-    top: 0;
+    top: 9mm;
+    left: 11mm;
+    color: gold;
   }
 
   .type,
@@ -29,19 +41,24 @@
     display: inline-block;
     font-size: 5mm;
     position: absolute;
-    left: 3.5mm;
-    top: 18mm;
+    left: 10.5mm;
+    top: 24.5mm;
+    background: white;
   }
-  .subtype {
-    top: 26mm;
+  .type {
+    left: unset;
+    right: 10mm;
   }
   .explain {
-    margin: 28mm 4mm 0 15mm;
+    font-size: 3.6mm;
+    margin: 35mm 6mm 0 13mm;
   }
   .bonus {
     position: absolute;
-    left: 3.5mm;
-    bottom: 3.5mm;
+    left: 8mm;
+    bottom: 36mm;
+    font-style: italic;
+    font-size: 3mm;
   }
 
   &.back {
@@ -54,7 +71,7 @@
 
     img {
       width: 100%;
-      height: 100%;
+      // height: 100%;
     }
   }
 }
