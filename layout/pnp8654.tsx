@@ -7,7 +7,7 @@ function HLine(props: { y: number }) {
     <rect x="0mm" y={props.y - lt / 2 + 'mm'} width="100%" height={lt + 'mm'} />
   );
 }
-function VLine(props: { x: number; t: number }) {
+function VLine(props: { x: number }) {
   return (
     <rect y="0mm" x={props.x - lt / 2 + 'mm'} height="100%" width={lt + 'mm'} />
   );
@@ -69,8 +69,8 @@ export function PnP8654<T>(props: { content: T[]; item: ItemRenderer<T> }) {
         {props.content.map((item, i) => (
           <foreignObject
             className="card back"
-            x={(i - 2.5) * lw + 297 / 2 + 1 + 'mm'}
-            y={210 / 2 + py + 1 + 'mm'}
+            x={(i - 2.5) * lw + 297 / 2 + 'mm'}
+            y={210 / 2 + py + 'mm'}
             width={lw + 'mm'}
             height={lh + 'mm'}
             key={'back' + i}
