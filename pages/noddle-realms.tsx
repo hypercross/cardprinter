@@ -42,7 +42,7 @@ function useNoodleRealmCards() {
   return suspend(
     async function () {
       let data: any[] = await loadCSV(
-        'https://docs.google.com/spreadsheets/d/e/2PACX-1vQuzbtPBap-36-EE9lHVTiX00CdPRR8sw8KIRIM-NSRO_b-ILcTePEAUlQbevbDENjc-0GWqn-Gv84q/pub?gid=1441192833&single=true&output=csv'
+        'https://docs.google.com/spreadsheets/d/e/2PACX-1vQuzbtPBap-36-EE9lHVTiX00CdPRR8sw8KIRIM-NSRO_b-ILcTePEAUlQbevbDENjc-0GWqn-Gv84q/pub?gid=1748968550&single=true&output=csv'
       );
       data = leftjoin(
         '',
