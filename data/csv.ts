@@ -2,7 +2,7 @@ export async function loadCSV(url: string) {
   const res = await fetch(url);
   const txt = await res.text();
   const lines = txt.split('\n');
-  const cells = lines.map((line) => line.split(','));
+  const cells = lines.map((line) => line.split(',').map((one) => one.trim()));
 
   const header = cells[0];
   const items = cells.slice(1);

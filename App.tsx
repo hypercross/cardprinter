@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Link, Route, Switch } from 'wouter';
 import { createTTSLayout, PnP8654 } from './layout';
+import { ALSPnP } from './pages/air-land-sea';
 import { BeastybarCabbages } from './pages/beastybar-cabbages';
 import { GroupBuy } from './pages/groupbuy';
 import { MindbugCatdogs } from './pages/mindbug-catdogs';
@@ -45,6 +46,10 @@ export default function App() {
           <NoodleRealmPnP />
         </Route>
 
+        <Route path="/als/pnp">
+          <ALSPnP />
+        </Route>
+
         <Route>
           <div style={{ display: 'flex', flexDirection: 'column' }}>
             <Link to="/mfgc/pnp">猫妃狗臣pnp</Link>
@@ -54,6 +59,7 @@ export default function App() {
             <Link to="/gbuy/pnp">我的团长pnp</Link>
             <Link to="/ndrm/tts">小面国度tts</Link>
             <Link to="/ndrm/pnp">小面国度pnp</Link>
+            <Link to="/als/pnp">海陆空pnp</Link>
           </div>
         </Route>
       </Switch>
