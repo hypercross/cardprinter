@@ -51,6 +51,13 @@ function useNoodleRealmCards() {
           'https://www.notion.so/a1b9af84f3d9473d884cd2f415d5bffb'
         )
       );
+      data = leftjoin(
+        '名称',
+        data,
+        await loadNotionDB(
+          'https://nine-newsprint-c9d.notion.site/4ef514e1de6c43f7a270db8a42793167?v=31b92726e0c54c48b8866e2ffe77964e'
+        )
+      );
       data.forEach((item) => {
         item.类型 = item.主类型;
         item.子类型 = item.副类型;
@@ -92,6 +99,9 @@ function CardFront(props: { item: any }) {
     >
       <div className="frame">
         <img src={props.item.卡框} />
+      </div>
+      <div className="illustration">
+        <img src={props.item.插图} />
       </div>
       <div className="name">{props.item.名称}</div>
       <div className="type">{props.item.类型}</div>
