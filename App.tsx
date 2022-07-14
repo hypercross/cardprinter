@@ -3,6 +3,7 @@ import { Link, Route, Switch } from 'wouter';
 import { createTTSLayout, PnP8654 } from './layout';
 import { ALSPnP } from './pages/air-land-sea';
 import { BeastybarCabbages } from './pages/beastybar-cabbages';
+import { DrunkardPNP } from './pages/drunkard';
 import { GroupBuy } from './pages/groupbuy';
 import { MindbugCatdogs } from './pages/mindbug-catdogs';
 import { NoodleRealmCards, NoodleRealmPnP } from './pages/noddle-realms';
@@ -49,6 +50,9 @@ export default function App() {
         <Route path="/als/pnp">
           <ALSPnP />
         </Route>
+        <Route path="/drunkard/pnp">
+          <DrunkardPNP />
+        </Route>
 
         <Route>
           <div style={{ display: 'flex', flexDirection: 'column' }}>
@@ -60,6 +64,7 @@ export default function App() {
             <Link to="/ndrm/tts">小面国度tts</Link>
             <Link to="/ndrm/pnp">小面国度pnp</Link>
             <Link to="/als/pnp">海陆空pnp</Link>
+            <Link to="/drunkard/pnp">喝酒海陆空pnp</Link>
           </div>
         </Route>
       </Switch>
