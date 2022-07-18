@@ -42,7 +42,7 @@ function useNoodleRealmCards() {
   return suspend(
     async function () {
       let data: any[] = await loadCSV(
-        'https://docs.google.com/spreadsheets/d/e/2PACX-1vQuzbtPBap-36-EE9lHVTiX00CdPRR8sw8KIRIM-NSRO_b-ILcTePEAUlQbevbDENjc-0GWqn-Gv84q/pub?gid=1748968550&single=true&output=csv'
+        'https://docs.google.com/spreadsheets/d/e/2PACX-1vQuzbtPBap-36-EE9lHVTiX00CdPRR8sw8KIRIM-NSRO_b-ILcTePEAUlQbevbDENjc-0GWqn-Gv84q/pub?gid=159877498&single=true&output=csv'
       );
       data = leftjoin(
         '',
@@ -84,28 +84,34 @@ function NoodleRealmCard(props: { item: any; variant: string }) {
 function CardFront(props: { item: any }) {
   let template = '';
   if (props.item.类型 === '面条') {
-    template = '你的$1牌，每张点数+$2。只有一张面条有效。';
+    template = '可与$1搭配。';
   } else if (props.item.类型 === '调味') {
-    template = '你的$1牌，每张点数+$2。';
+    template = '可与$1牌搭配。';
   } else {
-    template = '如果你有其他$1牌，则点数+$2。';
+    template = '可与$1搭配。';
   }
   const explain = template
     .replace('$1', '**' + props.item.加成条件.join(', ') + '**')
     .replace('$2', props.item.加分);
   return (
     <div
-      className={`noodle-realm-frame ${props.item.类型} ${props.item.子类型}`}
+      className={`noodle-realm-frame ${props.item.子类型} ${props.item.类型} `}
     >
       <div className="frame">
         <img src={props.item.卡框} />
       </div>
-      <div className="illustration">
-        <img src={props.item.插图} />
+      <div className="highlight">
+        <img src={props.item.高亮} />
       </div>
-      <div className="name">{props.item.名称}</div>
-      <div className="type">{props.item.类型}</div>
-      <div className="subtype">{props.item.子类型}</div>
+      <div className="illustration">
+        <img src={props.item.插图 || props.item.问号} />
+      </div>
+      <div className={`name chars-${props.item.名称.length}`}>
+        {props.item.名称}
+      </div>
+      <div className="type">
+        {props.item.子类型} {props.item.类型}
+      </div>
       <div className="score">{props.item.基本分}</div>
       <div className="explain">
         <ReactMarkdown>{explain}</ReactMarkdown>
@@ -114,6 +120,12 @@ function CardFront(props: { item: any }) {
         {props.item.加成条件.map((extra) => (
           <div key={extra}>+{extra}</div>
         ))}
+      </div>
+      <div className="highlight multiply">
+        <img src={props.item.multiply} />
+      </div>
+      <div className="highlight screen">
+        <img src={props.item.screen} />
       </div>
     </div>
   );
@@ -127,6 +139,13 @@ function CardBack(props: { item: any }) {
       }`}
     >
       <img src={props.item.卡背} crossOrigin="anonymous" />
+
+      <div className="highlight multiply">
+        <img src={props.item.multiply} />
+      </div>
+      <div className="highlight screen">
+        <img src={props.item.screen} />
+      </div>
     </div>
   );
 }

@@ -18,6 +18,22 @@
     height: 0;
   }
 
+  .highlight {
+    position: absolute;
+    left: 1mm;
+    top: 1mm;
+    img {
+      width: 54mm;
+      height: 86mm;
+    }
+    &.screen {
+      mix-blend-mode: screen;
+    }
+    &.multiply {
+      mix-blend-mode: multiply;
+    }
+  }
+
   .illustration {
     position: absolute;
     height: 100%;
@@ -31,12 +47,24 @@
   }
 
   .name {
-    margin-left: 18mm;
-    margin-right: 9mm;
+    --ls: 0;
+    margin-left: 12mm;
+    margin-right: calc(12mm - var(--ls));
     margin-top: 2mm;
     font-size: 5mm;
     font-family: Xiquezhaopaiti;
     font-weight: bold;
+    letter-spacing: var(--ls);
+    color: #4c2e1b;
+    &.chars-2 {
+      --ls: 1em;
+    }
+    &.chars-3 {
+      --ls: calc(5em / 7);
+    }
+    &.chars-4 {
+      --ls: calc(5em / 20);
+    }
   }
 
   .score {
@@ -54,18 +82,15 @@
     display: inline-block;
     font-size: 5mm;
     position: absolute;
-    bottom: 8mm;
-    right: 30mm;
+    bottom: 20mm;
+    left: 0;
+    right: 0;
     font-family: Xiquezhaopaiti;
-  }
-  .type {
-    right: unset;
-    left: 29mm;
   }
   .explain {
     font-size: 2.7mm;
     height: 10mm;
-    bottom: 16mm;
+    bottom: 10mm;
     position: absolute;
     left: 8mm;
     right: 8mm;
