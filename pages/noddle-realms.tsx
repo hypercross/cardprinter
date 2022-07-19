@@ -84,11 +84,11 @@ function NoodleRealmCard(props: { item: any; variant: string }) {
 function CardFront(props: { item: any }) {
   let template = '';
   if (props.item.类型 === '面条') {
-    template = '可与$1搭配。';
+    template = '可与$1搭配';
   } else if (props.item.类型 === '调味') {
-    template = '可与$1牌搭配。';
+    template = '可与$1搭配';
   } else {
-    template = '可与$1搭配。';
+    template = '可与$1搭配';
   }
   const explain = template
     .replace('$1', '**' + props.item.加成条件.join(', ') + '**')
