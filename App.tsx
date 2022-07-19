@@ -55,16 +55,44 @@ export default function App() {
         </Route>
 
         <Route>
-          <div style={{ display: 'flex', flexDirection: 'column' }}>
-            <Link to="/mfgc/pnp">猫妃狗臣pnp</Link>
-            <Link to="/mfgc/tts">猫妃狗臣tts</Link>
-            <Link to="/bbcb/pnp">抢菜难pnp</Link>
-            <Link to="/bbcb/tts">抢菜难tts</Link>
-            <Link to="/gbuy/pnp">我的团长pnp</Link>
-            <Link to="/ndrm/tts">小面国度tts</Link>
-            <Link to="/ndrm/pnp">小面国度pnp</Link>
-            <Link to="/als/pnp">海陆空pnp</Link>
-            <Link to="/drunkard/pnp">喝酒海陆空pnp</Link>
+          <link
+            rel="stylesheet"
+            href="https://unpkg.com/bulmaswatch@0.8.1/lumen/bulmaswatch.min.css"
+          />
+          <div className="section">
+            <div className="container content">
+              <div className="menu">
+                <ul className="menu-list">
+                  <li>
+                    <Link to="/mfgc/pnp">猫妃狗臣pnp</Link>
+                  </li>
+                  <li>
+                    <Link to="/mfgc/tts">猫妃狗臣tts</Link>
+                  </li>
+                  <li>
+                    <Link to="/bbcb/pnp">抢菜难pnp</Link>
+                  </li>
+                  <li>
+                    <Link to="/bbcb/tts">抢菜难tts</Link>
+                  </li>
+                  <li>
+                    <Link to="/gbuy/pnp">我的团长pnp</Link>
+                  </li>
+                  <li>
+                    <Link to="/ndrm/tts">煮面给你吃tts</Link>
+                  </li>
+                  <li>
+                    <Link to="/ndrm/pnp">煮面给你吃pnp</Link>
+                  </li>
+                  <li>
+                    <Link to="/als/pnp">海陆空pnp</Link>
+                  </li>
+                  <li>
+                    <Link to="/drunkard/pnp">喝酒海陆空pnp</Link>
+                  </li>
+                </ul>
+              </div>
+            </div>
           </div>
         </Route>
       </Switch>

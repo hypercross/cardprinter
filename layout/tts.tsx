@@ -17,8 +17,8 @@ export function createTTSLayout(
     const download = React.useCallback(() => downloadSvg(ref.current), [ref]);
     return (
       <React.Fragment>
-        <button onClick={download}>下载svg</button>
-        <br />
+        {/* <button onClick={download}>下载svg</button>
+        <br /> */}
         <svg
           ref={ref}
           width={width * cols + 'mm'}
