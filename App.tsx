@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Link, Route, Switch } from 'wouter';
 import { createTTSLayout, PnP8654 } from './layout';
-import { ALSPnP } from './pages/air-land-sea';
+import { ALSPnP, ALSTTS } from './pages/air-land-sea';
 import { BeastybarCabbages } from './pages/beastybar-cabbages';
 import { DrunkardPNP } from './pages/drunkard';
 import { GroupBuy } from './pages/groupbuy';
@@ -50,6 +50,9 @@ export default function App() {
         <Route path="/als/pnp">
           <ALSPnP />
         </Route>
+        <Route path="/als/tts">
+          <ALSTTS />
+        </Route>
         <Route path="/drunkard/pnp">
           <DrunkardPNP />
         </Route>
@@ -86,6 +89,9 @@ export default function App() {
                   </li>
                   <li>
                     <Link to="/als/pnp">海陆空pnp</Link>
+                  </li>
+                  <li>
+                    <Link to="/als/tts">海陆空tts</Link>
                   </li>
                   <li>
                     <Link to="/drunkard/pnp">喝酒海陆空pnp</Link>

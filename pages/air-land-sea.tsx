@@ -1,12 +1,23 @@
 import React = require('react');
 import { suspend } from 'suspend-react';
 import { loadCSV } from '../data/csv';
-import { Pages, PnP8654 } from '../layout';
+import { createTTSLayout, Pages, PnP8654 } from '../layout';
 import './air-land-sea.less';
 
 export function ALSPnP() {
   return (
     <Pages layout={PnP8654} group={5} content={useALSData()} item={ALSCard} />
+  );
+}
+
+export function ALSTTS() {
+  return (
+    <Pages
+      layout={createTTSLayout(5, 4, 54, 86)}
+      group={20}
+      content={useALSData()}
+      item={ALSCard}
+    />
   );
 }
 
@@ -27,15 +38,15 @@ function ALSCard(props: { item: any; variant: string }) {
   if (props.variant === 'back') {
     return <CardBack {...props.item} />;
   } else if (props.variant === 'ttsback') {
-    return <CardBack {...props.item} />;
+    return <CardBack {...props.item} straight />;
   } else {
     return <CardFront {...props.item} />;
   }
 }
 
-function CardBack() {
+function CardBack(props: { straight?: boolean }) {
   return (
-    <div className="als-frame back">
+    <div className={`als-frame back ${props.straight ? 'straight' : ''}`}>
       <div className="layer rank">2</div>
       <div className="layer logo">海陆空</div>
     </div>
