@@ -26,7 +26,7 @@ export function BeastybarCabbages(props: {
             ...data,
             ...unique(data as any, '颜色').map((one) => ({
               ...one,
-              variant: 'back',
+              variant: 'ttsback',
             })),
           ]
         : data;
@@ -40,16 +40,19 @@ export function BeastybarCabbages(props: {
 }
 
 function Card(props: { item: any; variant: string }) {
-  if (props.variant === 'back') {
+  if (props.variant === 'back' || props.variant === 'ttsback') {
     return (
-      <div className="card-frame bbcb">
+      <div
+        className={`card-frame bbcb ${
+          props.variant === 'ttsback' ? 'straight' : ''
+        }`}
+      >
         <div
           className="card-layer prop-卡背"
           style={{ backgroundColor: props.item.颜色 }}
         >
           <img
             src={props.item.卡背}
-            style={{ transform: 'rotate(180deg)' }}
             onLoad={toDataURL}
             crossOrigin="anonymous"
           />

@@ -1,6 +1,7 @@
 .card-frame.bbcb {
   background-size: 100%;
   background-color: var(--color);
+  font-family: sans-serif;
 
   .card-layer {
     position: absolute;
@@ -32,6 +33,14 @@
 
   clip-path: circle(27% at 49% 52%);
   background: white;
+
+  img {
+    transform: rotate(180deg);
+  }
+}
+
+.bbcb.straight .prop-卡背 {
+  transform: rotate(180deg);
 }
 
 .bbcb .prop-印象图 {
