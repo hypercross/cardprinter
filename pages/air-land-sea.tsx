@@ -13,24 +13,28 @@ export function ALSPnP() {
 export function ALSTTS() {
   return (
     <Pages
-      layout={createTTSLayout(5, 4, 54, 86)}
-      group={20}
-      content={useALSData()}
+      layout={createTTSLayout(7, 3, 54, 86)}
+      group={21}
+      content={useALSData(true)}
       item={ALSCard}
     />
   );
 }
 
-function useALSData() {
+function useALSData(back?: boolean) {
   return suspend(
     async function () {
       let data = await loadCSV(
         'https://docs.google.com/spreadsheets/d/e/2PACX-1vSlWpHSGcaizsc7AuzoJJ0PeYtP6xrFz9cfP6kpm8vIsY01ZvRCZ94JPIjqwwLYxFkmjCxr63YK7JcW/pub?gid=0&single=true&output=csv'
       );
 
+      if (back) {
+        data.push({ variant: 'ttsback' });
+      }
+
       return data;
     },
-    ['als']
+    ['als', back]
   );
 }
 
