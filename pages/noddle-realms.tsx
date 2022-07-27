@@ -7,24 +7,24 @@ import { ReactMarkdown } from 'react-markdown/lib/react-markdown';
 import { leftjoin } from '../data/leftjoin';
 
 export function NoodleRealmPDF() {
-  const cards = useNoodleRealmCards();
+  const cards = useNoodleRealmCards('ttsback', 'rule');
   return (
     <Pages
       layout={Single6393}
       item={NoodleRealmCard}
-      content={[...cards, { variant: 'ttsback', ...cards[0] }]}
+      content={cards}
       group={1}
     />
   );
 }
 
 export function NoodleRealmCards() {
-  const cards = useNoodleRealmCards();
+  const cards = useNoodleRealmCards('ttsback');
   return (
     <Pages
       layout={createTTSLayout(8, 7, 56, 88)}
       item={NoodleRealmCard}
-      content={[...cards, { variant: 'ttsback', ...cards[0] }]}
+      content={cards}
       group={56}
     />
   );
@@ -41,7 +41,7 @@ export function NoodleRealmPnP() {
   );
 }
 
-function useNoodleRealmCards() {
+function useNoodleRealmCards(...variants: string[]) {
   // return suspend(
   //   async function () {
   //     let data: any[] = await loadNotionDB(
@@ -78,9 +78,10 @@ function useNoodleRealmCards() {
           .map((one) => one.trim())
           .filter((one) => !!one);
       });
+      data.push(...variants.map((variant) => ({ ...data[0], variant })));
       return data;
     },
-    ['noodlerealms']
+    ['noodlerealms', ...variants]
   );
 }
 
@@ -89,6 +90,8 @@ function NoodleRealmCard(props: { item: any; variant: string }) {
     return <CardBack {...props} />;
   } else if (props.variant === 'ttsback') {
     return <CardBack {...props} />;
+  } else if (props.variant === 'rule') {
+    return <CardRule {...props} />;
   } else {
     return <CardFront {...props} />;
   }
@@ -152,6 +155,23 @@ function CardBack(props: { item: any }) {
     >
       <div className="frame padded">
         <img src={props.item.卡背} crossOrigin="anonymous" />
+      </div>
+
+      <div className="frame multiply">
+        <img src={props.item.multiply} />
+      </div>
+      <div className="frame screen">
+        <img src={props.item.screen} />
+      </div>
+    </div>
+  );
+}
+function CardRule(props: { item: any }) {
+  // console.log(props.item);
+  return (
+    <div className={`noodle-realm-frame ${props.item.variant}`}>
+      <div className="frame padded">
+        <img src={props.item.rule} crossOrigin="anonymous" />
       </div>
 
       <div className="frame multiply">
