@@ -1,10 +1,22 @@
 import React = require('react');
 import { suspend } from 'suspend-react';
-import { loadCSV, loadNotionDB, toDataURL } from '../data';
+import { loadCSV, loadNotionDB } from '../data';
 import './noodle-realms.less';
-import { createTTSLayout, Pages, PnP8654 } from '../layout';
+import { createTTSLayout, Pages, PnP8654, Single6393 } from '../layout';
 import { ReactMarkdown } from 'react-markdown/lib/react-markdown';
 import { leftjoin } from '../data/leftjoin';
+
+export function NoodleRealmPDF() {
+  const cards = useNoodleRealmCards();
+  return (
+    <Pages
+      layout={Single6393}
+      item={NoodleRealmCard}
+      content={[...cards, { variant: 'ttsback', ...cards[0] }]}
+      group={1}
+    />
+  );
+}
 
 export function NoodleRealmCards() {
   const cards = useNoodleRealmCards();
@@ -97,20 +109,20 @@ function CardFront(props: { item: any }) {
     <div
       className={`noodle-realm-frame ${props.item.子类型} ${props.item.类型} `}
     >
-      <div className="frame">
+      <div className="frame padded">
         <img src={props.item.卡框} />
       </div>
-      <div className="highlight">
+      <div className="frame padded">
         <img src={props.item.高亮} />
       </div>
-      <div className="illustration">
+      <div className="frame padded">
         <img src={props.item.插图 || props.item.问号} />
       </div>
       <div className={`name chars-${props.item.名称.length}`}>
         {props.item.名称}
       </div>
       <div className="type">
-        {props.item.子类型} {props.item.类型}
+        {props.item.类型} {props.item.子类型}
       </div>
       <div className="score">{props.item.基本分}</div>
       <div className="explain">
@@ -121,10 +133,10 @@ function CardFront(props: { item: any }) {
           <div key={extra}>+{extra}</div>
         ))}
       </div>
-      <div className="highlight multiply">
+      <div className="frame multiply">
         <img src={props.item.multiply} />
       </div>
-      <div className="highlight screen">
+      <div className="frame screen">
         <img src={props.item.screen} />
       </div>
     </div>
@@ -138,12 +150,14 @@ function CardBack(props: { item: any }) {
         props.item.variant === 'ttsback' ? 'straight' : ''
       }`}
     >
-      <img src={props.item.卡背} crossOrigin="anonymous" />
+      <div className="frame padded">
+        <img src={props.item.卡背} crossOrigin="anonymous" />
+      </div>
 
-      <div className="highlight multiply">
+      <div className="frame multiply">
         <img src={props.item.multiply} />
       </div>
-      <div className="highlight screen">
+      <div className="frame screen">
         <img src={props.item.screen} />
       </div>
     </div>

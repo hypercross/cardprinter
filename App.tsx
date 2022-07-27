@@ -6,7 +6,11 @@ import { BeastybarCabbages } from './pages/beastybar-cabbages';
 import { DrunkardPNP } from './pages/drunkard';
 import { GroupBuy } from './pages/groupbuy';
 import { MindbugCatdogs } from './pages/mindbug-catdogs';
-import { NoodleRealmCards, NoodleRealmPnP } from './pages/noddle-realms';
+import {
+  NoodleRealmCards,
+  NoodleRealmPDF,
+  NoodleRealmPnP,
+} from './pages/noddle-realms';
 
 export default function App() {
   return (
@@ -45,6 +49,9 @@ export default function App() {
         </Route>
         <Route path="/ndrm/pnp">
           <NoodleRealmPnP />
+        </Route>
+        <Route path="/ndrm/pdf">
+          <NoodleRealmPDF />
         </Route>
 
         <Route path="/als/pnp">
@@ -86,6 +93,9 @@ export default function App() {
                   </li>
                   <li>
                     <Link to="/ndrm/pnp">煮面给你吃pnp</Link>
+                  </li>
+                  <li>
+                    <Link to="/ndrm/pdf">煮面给你吃pdf</Link>
                   </li>
                   <li>
                     <Link to="/als/pnp">海陆空pnp</Link>

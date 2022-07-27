@@ -1,61 +1,60 @@
 .noodle-realm-frame {
-  padding: 4mm;
-  max-width: calc(100% - 8mm);
-  height: calc(100% - 8mm);
+  position: relative;
+  width: 100%;
+  height: 100%;
 
   background-color: white;
   text-align: center;
 
-  // border: 2mm solid grey;
-  // box-sizing: border-box;
-
   .frame {
-    img {
-      width: 54mm;
-      height: 86mm;
-      margin: -3mm -4mm -4mm -4mm;
-    }
-    height: 0;
-  }
-
-  .highlight {
+    width: 100%;
+    height: 100%;
     position: absolute;
-    left: 1mm;
-    top: 1mm;
-    img {
-      width: 54mm;
-      height: 86mm;
-    }
+    display: flex;
+
     &.screen {
       mix-blend-mode: screen;
     }
     &.multiply {
       mix-blend-mode: multiply;
     }
-  }
+    &.padded {
+      padding: 2mm;
+      width: calc(100% - 4mm);
+      height: calc(100% - 4mm);
+    }
 
-  .illustration {
-    position: absolute;
-    height: 100%;
-    width: 100%;
-    left: 0;
-    top: 0;
     img {
-      width: 53mm;
-      margin-top: 3mm;
+      width: 100%;
+      height: 100%;
     }
   }
 
+  .single & .frame.padded {
+    padding: 5mm;
+    width: calc(100% - 10mm);
+    height: calc(100% - 10mm);
+  }
+
   .name {
-    --ls: 0;
-    margin-left: 12mm;
-    margin-right: calc(12mm - var(--ls));
-    margin-top: 2mm;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 7.5%;
+
+    .single & {
+      top: 10%;
+    }
+
     font-size: 5mm;
     font-family: Xiquezhaopaiti;
     font-weight: bold;
-    letter-spacing: var(--ls);
     color: #4c2e1b;
+
+    padding-left: var(--ls);
+    --ls: 0;
+    letter-spacing: var(--ls);
+
     &.chars-2 {
       --ls: 1em;
     }
@@ -67,42 +66,37 @@
     }
   }
 
-  .score {
-    font-size: 7mm;
-    font-family: Xiquezhaopaiti;
-    font-weight: bold;
-    position: absolute;
-    top: 4.5mm;
-    left: 17.9mm;
-    color: white;
-  }
-
   .type,
   .subtype {
     display: inline-block;
     font-size: 5mm;
     position: absolute;
-    bottom: 20mm;
+    bottom: 23%;
     left: 0;
     right: 0;
     font-family: Xiquezhaopaiti;
+
+    .single & {
+      bottom: 25%;
+    }
   }
   .explain {
     font-size: 2.7mm;
     height: 10mm;
-    bottom: 10mm;
+    bottom: 11.5%;
     position: absolute;
     left: 8mm;
     right: 8mm;
     font-family: sans-serif;
+
+    .single & {
+      bottom: 14%;
+    }
   }
+
+  .score,
   .bonus {
     display: none;
-    position: absolute;
-    left: 8mm;
-    bottom: 36mm;
-    font-style: italic;
-    font-size: 3mm;
   }
 
   &.back {
