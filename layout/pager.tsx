@@ -3,12 +3,13 @@ import { groupBy } from '../data';
 
 export const itemCtx = React.createContext([{}, ''] as [any, string]);
 
-export interface LayoutRenderer<T> {
+type CardProps = { variant?: string; side?: 'front' | 'back' };
+export interface LayoutRenderer<T extends CardProps> {
   (props: { item: ItemRenderer<T>; content: T[] }): JSX.Element;
 }
 
-export interface ItemRenderer<T> {
-  (props: { item: T; variant?: string }): JSX.Element;
+export interface ItemRenderer<T extends CardProps> {
+  (props: { item: T }): JSX.Element;
 }
 
 export function Pages<T>(props: {

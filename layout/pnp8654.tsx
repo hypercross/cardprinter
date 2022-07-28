@@ -62,20 +62,23 @@ export function PnP8654<T>(props: { content: T[]; item: ItemRenderer<T> }) {
             height={lh + 'mm'}
             key={i}
           >
-            <Item item={item} variant="front" />
+            <Item item={item} />
           </foreignObject>
         ))}
 
         {props.content.map((item, i) => (
           <foreignObject
             className="card back"
+            transform="rotate(180deg)"
             x={(i - 2.5) * lw + 297 / 2 + 'mm'}
             y={210 / 2 + py + 'mm'}
             width={lw + 'mm'}
             height={lh + 'mm'}
             key={'back' + i}
           >
-            <Item item={item} variant="back" />
+            <div style={{ transform: 'rotate(180deg)' }}>
+              <Item item={{ ...item, side: 'back' }} />
+            </div>
           </foreignObject>
         ))}
       </g>
