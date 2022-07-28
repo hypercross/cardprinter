@@ -79,6 +79,15 @@ function useNoodleRealmCards(...variants: string[]) {
           .filter((one) => !!one);
       });
       data.push(...variants.map((variant) => ({ ...data[0], variant })));
+      if (variants.indexOf('rule') >= 0) {
+        const fridges = await loadNotionDB(
+          'https://nine-newsprint-c9d.notion.site/2c74cfe7184046849a1bb0dc6ca0922d?v=18eea13a2440466e96f96e5a1d06c693'
+        );
+        fridges.forEach((one) => {
+          one.variant = 'fridge';
+        });
+        data.push(...fridges);
+      }
       return data;
     },
     ['noodlerealms', ...variants]
@@ -92,6 +101,8 @@ function NoodleRealmCard(props: { item: any; variant: string }) {
     return <CardBack {...props} />;
   } else if (props.variant === 'rule') {
     return <CardRule {...props} />;
+  } else if (props.variant === 'fridge') {
+    return <CardFridge {...props} />;
   } else {
     return <CardFront {...props} />;
   }
@@ -137,10 +148,7 @@ function CardFront(props: { item: any }) {
         ))}
       </div>
       <div className="frame multiply">
-        <img src={props.item.multiply} />
-      </div>
-      <div className="frame screen">
-        <img src={props.item.screen} />
+        <img src={props.item.卡面滤镜} />
       </div>
     </div>
   );
@@ -158,10 +166,7 @@ function CardBack(props: { item: any }) {
       </div>
 
       <div className="frame multiply">
-        <img src={props.item.multiply} />
-      </div>
-      <div className="frame screen">
-        <img src={props.item.screen} />
+        <img src={props.item.卡背背景} />
       </div>
     </div>
   );
@@ -175,10 +180,21 @@ function CardRule(props: { item: any }) {
       </div>
 
       <div className="frame multiply">
-        <img src={props.item.multiply} />
+        <img src={props.item.卡面滤镜} />
       </div>
-      <div className="frame screen">
-        <img src={props.item.screen} />
+    </div>
+  );
+}
+function CardFridge(props: { item: any }) {
+  // console.log(props.item);
+  return (
+    <div className={`noodle-realm-frame ${props.item.variant}`}>
+      <div className="frame multiply">
+        <img src={props.item.出血} />
+      </div>
+
+      <div className="frame padded">
+        <img src={props.item.冰箱图} crossOrigin="anonymous" />
       </div>
     </div>
   );
