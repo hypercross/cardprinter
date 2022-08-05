@@ -30,6 +30,18 @@ export function NoodleRealmCards() {
   );
 }
 
+export function NoodleRealmPnP豆腐节() {
+  const card = useNoodleRealmCards().find((one) => one.名称 === '豆腐结');
+  return (
+    <Pages
+      layout={PnP8654}
+      group={5}
+      content={[card, card, card, card, card]}
+      item={NoodleRealmCard}
+    />
+  );
+}
+
 export function NoodleRealmPnP() {
   return (
     <Pages

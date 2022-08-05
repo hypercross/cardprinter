@@ -40,13 +40,9 @@ export function BeastybarCabbages(props: {
 }
 
 function Card(props: { item: any; variant: string }) {
-  if (props.variant === 'back' || props.variant === 'ttsback') {
+  if (props.item.side === 'back') {
     return (
-      <div
-        className={`card-frame bbcb ${
-          props.variant === 'ttsback' ? 'straight' : ''
-        }`}
-      >
+      <div className="card-frame bbcb straight">
         <div
           className="card-layer prop-卡背"
           style={{ backgroundColor: props.item.颜色 }}
