@@ -5,4 +5,9 @@
   align-items: center;
   justify-content: center;
   position: relative;
+
+  @media print {
+    margin-bottom: calc(100vh - 100%);
+    break-inside: avoid;
+  }
 }
