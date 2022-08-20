@@ -90,6 +90,15 @@ function useNoodleRealmCards(...variants: string[]) {
       });
       data.push(...fridges);
 
+      //角色
+      const chars = await loadNotionDB(
+        'https://www.notion.so/629317e82ce846f5b54dff91c3a57a75?v=de645cc6a56843c7ab30b22a1b9b3036'
+      );
+      chars.forEach((char) => {
+        char.variant = 'char';
+      });
+      data.push(...chars);
+
       // 附加
       data = leftjoin(
         '',
@@ -123,6 +132,12 @@ function NoodleRealmCard(props: { item: any }) {
       return <CardRule {...props} />;
     } else {
       return <CardFridge {...props} />;
+    }
+  } else if (variant === 'char') {
+    if (side === 'back') {
+      return <CardBack {...props} backkey="角色卡背" />;
+    } else {
+      return <CardChar {...props} />;
     }
   }
   return null;
@@ -173,12 +188,15 @@ function CardFront(props: { item: any }) {
     </div>
   );
 }
-function CardBack(props: { item: any }) {
+function CardBack(props: { item: any; backkey?: string }) {
   // console.log(props.item);
   return (
     <div className={`noodle-realm-frame ${props.item.variant}`}>
       <div className="frame padded">
-        <img src={props.item.卡背} crossOrigin="anonymous" />
+        <img
+          src={props.item[props.backkey || '卡背']}
+          crossOrigin="anonymous"
+        />
       </div>
 
       <div className="frame multiply">
@@ -211,6 +229,22 @@ function CardFridge(props: { item: any }) {
 
       <div className="frame padded">
         <img src={props.item.冰箱图} crossOrigin="anonymous" />
+      </div>
+    </div>
+  );
+}
+function CardChar(props: { item: any }) {
+  return (
+    <div className={`noodle-realm-frame ${props.item.variant}`}>
+      <div className="frame multiply">
+        <img src={props.item.出血} />
+      </div>
+
+      <div className="frame padded">
+        <img src={props.item.图} crossOrigin="anonymous" />
+      </div>
+      <div className="frame multiply">
+        <img src={props.item.卡面滤镜} />
       </div>
     </div>
   );
