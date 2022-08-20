@@ -135,7 +135,7 @@ function NoodleRealmCard(props: { item: any }) {
     }
   } else if (variant === 'char') {
     if (side === 'back') {
-      return <CardBack {...props} backkey="角色卡背" />;
+      return <CardBack {...props} backkey="角色卡背" filterkey="卡面滤镜" />;
     } else {
       return <CardChar {...props} />;
     }
@@ -188,7 +188,7 @@ function CardFront(props: { item: any }) {
     </div>
   );
 }
-function CardBack(props: { item: any; backkey?: string }) {
+function CardBack(props: { item: any; backkey?: string; filterkey?: string }) {
   // console.log(props.item);
   return (
     <div className={`noodle-realm-frame ${props.item.variant}`}>
@@ -200,7 +200,7 @@ function CardBack(props: { item: any; backkey?: string }) {
       </div>
 
       <div className="frame multiply">
-        <img src={props.item.卡背背景} />
+        <img src={props.item[props.filterkey || '卡背背景']} />
       </div>
     </div>
   );
@@ -236,10 +236,6 @@ function CardFridge(props: { item: any }) {
 function CardChar(props: { item: any }) {
   return (
     <div className={`noodle-realm-frame ${props.item.variant}`}>
-      <div className="frame multiply">
-        <img src={props.item.出血} />
-      </div>
-
       <div className="frame padded">
         <img src={props.item.图} crossOrigin="anonymous" />
       </div>
