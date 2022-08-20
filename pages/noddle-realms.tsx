@@ -7,7 +7,7 @@ import { ReactMarkdown } from 'react-markdown/lib/react-markdown';
 import { leftjoin } from '../data/leftjoin';
 
 export function NoodleRealmPDF() {
-  const cards = useNoodleRealmCards('food', 'fridge');
+  const cards = useNoodleRealmCards('food', 'fridge', 'char');
   return (
     <Pages
       layout={Single6393}
@@ -96,6 +96,7 @@ function useNoodleRealmCards(...variants: string[]) {
       );
       chars.forEach((char) => {
         char.variant = 'char';
+        data[0].角色卡背 = char.角色卡背;
       });
       data.push(...chars);
 
