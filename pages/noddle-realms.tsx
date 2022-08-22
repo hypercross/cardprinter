@@ -30,6 +30,13 @@ export function NoodleRealmCards() {
   );
 }
 
+export function NoodleRealmPnPReprint() {
+  const cards = useNoodleRealmCards().filter((one) => one.variant !== 'food');
+  return (
+    <Pages layout={PnP8654} group={5} content={cards} item={NoodleRealmCard} />
+  );
+}
+
 export function NoodleRealmPnP豆腐节() {
   const card = useNoodleRealmCards().find((one) => one.名称 === '豆腐结');
   return (

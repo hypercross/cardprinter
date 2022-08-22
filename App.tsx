@@ -10,6 +10,7 @@ import {
   NoodleRealmCards,
   NoodleRealmPDF,
   NoodleRealmPnP,
+  NoodleRealmPnPReprint,
   NoodleRealmPnP豆腐节,
 } from './pages/noddle-realms';
 
@@ -53,6 +54,9 @@ export default function App() {
         </Route>
         <Route path="/ndrm/dfj">
           <NoodleRealmPnP豆腐节 />
+        </Route>
+        <Route path="/ndrm/reprint">
+          <NoodleRealmPnPReprint />
         </Route>
         <Route path="/ndrm/pdf">
           <NoodleRealmPDF />
@@ -100,6 +104,9 @@ export default function App() {
                   </li>
                   <li>
                     <Link to="/ndrm/dfj">煮面给你吃pnp豆腐结</Link>
+                  </li>
+                  <li>
+                    <Link to="/ndrm/reprint">煮面给你吃pnp重印</Link>
                   </li>
                   <li>
                     <Link to="/ndrm/pdf">煮面给你吃pdf</Link>
