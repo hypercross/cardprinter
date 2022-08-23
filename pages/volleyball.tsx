@@ -7,7 +7,9 @@ import './volleyball.less';
 export function VolleyballTTS() {
   const cards = useVolleyballCards();
 
-  return <Pages layout={TTS} item={VolleyballCard} group={5} content={cards} />;
+  return (
+    <Pages layout={TTS} item={VolleyballCard} group={20} content={cards} />
+  );
 }
 const TTS = createTTSLayout(10, 2, 56, 88);
 
@@ -58,7 +60,7 @@ function PlayCard(props: any) {
 }
 
 function SummaryCard(props: any) {
-  if (props.side === 'back') {
+  if (props.side !== 'back') {
     return (
       <Frame>
         <Layer>
