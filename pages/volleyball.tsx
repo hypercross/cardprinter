@@ -39,7 +39,7 @@ function PlayCard(props: any) {
         <Field code={props.Hits} />
       </Layer>
       <Layer className="catches">
-        <Field code={props.Catches} />
+        <Field code={props.Catches} all />
       </Layer>
     </Frame>
   );
