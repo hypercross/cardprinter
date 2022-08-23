@@ -1,10 +1,17 @@
 import React = require('react');
 import { suspend } from 'suspend-react';
 import { leftjoin, loadNotionDB } from '../data';
-import { el, Pages, PnP8654 } from '../layout';
+import { createTTSLayout, el, Pages, PnP8654 } from '../layout';
 import './volleyball.less';
 
-export function VolleyballPnp() {
+export function VolleyballTTS() {
+  const cards = useVolleyballCards();
+
+  return <Pages layout={TTS} item={VolleyballCard} group={5} content={cards} />;
+}
+const TTS = createTTSLayout(10, 2, 56, 88);
+
+export function VolleyballPnP() {
   const cards = useVolleyballCards();
 
   return (
