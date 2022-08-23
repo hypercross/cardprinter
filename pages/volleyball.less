@@ -1,9 +1,65 @@
 .volleyball {
-  .hits {
-    transform: translate(1mm, 1mm);
+  --border-color: slategray;
+  .layer.hits {
+    transform: translate(3mm, 3mm);
+    .playfield {
+      border-radius: 3mm 3mm 0 0;
+    }
   }
-  .catches {
-    transform: translate(1mm, 13mm);
+  .layer.catches {
+    transform: translate(3mm, 16mm);
+    .playfield {
+      border-radius: 0 0 3mm 3mm;
+    }
+  }
+  .layer.illustration {
+    transform: translate(4mm, 4mm);
+    width: 46mm;
+    height: 78mm;
+    border: 1mm solid var(--border-color);
+    border-radius: 2mm;
+  }
+  .layer.name {
+    height: unset;
+    top: unset;
+    bottom: 4mm;
+    font-family: Xiquezhaopaiti;
+  }
+  .layer.summary {
+    --x: calc(var(--t-pos-x) + var(--t-class));
+    --y: calc(var(--t-pos-y) + var(--t-field));
+    transform: translate(var(--x), var(--y));
+
+    --t-field: 0mm;
+    &.field-c {
+      --t-field: 30mm;
+    }
+
+    --t-pos-x: 12mm;
+    --t-pos-y: 12mm;
+    &.pos-0,
+    &.pos-2 {
+      --t-pos-x: -12mm;
+    }
+    &.pos-0,
+    &.pos-1 {
+      --t-pos-y: -12mm;
+    }
+
+    --t-class: 0mm;
+    color: gold;
+    font-family: sans-serif;
+    &.class-0 {
+      display: none;
+    }
+    &.class-1 {
+      color: dodgerblue;
+      --t-class: -3mm;
+    }
+    &.class-3 {
+      color: crimson;
+      --t-class: 3mm;
+    }
   }
 
   .layer {
@@ -13,16 +69,19 @@
     width: 100%;
     height: 100%;
   }
+  .text {
+    text-align: center;
+  }
   .illust {
-    width: 54mm;
-    height: 86mm;
+    width: 100%;
+    height: 100%;
     object-fit: contain;
-    margin: 1mm;
   }
   .playfield {
     width: 12mm;
     height: 12mm;
-    box-shadow: inset 0 0 0.5mm rgba(0, 0, 0, 0.5);
+    border: 1mm solid var(--border-color);
+    background: white;
 
     > .ball,
     > .ballgroup {
@@ -56,10 +115,17 @@
       }
     }
 
-    .ballgroup .class-1 {
+    .ballgroup-2 .class-1 {
+      transform: translate(-0.35mm, 0.35mm);
+    }
+    .ballgroup-2 .class-2 {
+      transform: translate(0.35mm, -0.35mm);
+    }
+
+    .ballgroup-3 .class-1 {
       transform: translate(-0.7mm, 0.7mm);
     }
-    .ballgroup .class-3 {
+    .ballgroup-3 .class-3 {
       transform: translate(0.7mm, -0.7mm);
     }
   }
