@@ -145,7 +145,7 @@ async function loadVolleyballCards() {
           hits[key]++;
         }
 
-        key = `h-${p}-${d}`;
+        key = `c-${p}-${d}`;
         hits[key] = hits[key] || 0;
         if (other.Catches[p] === d) {
           hits[key]++;
