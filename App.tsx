@@ -13,6 +13,7 @@ import {
   NoodleRealmPnPReprint,
   NoodleRealmPnP豆腐节,
 } from './pages/noddle-realms';
+import { VolleyballPnp } from './pages/volleyball';
 
 export default function App() {
   return (
@@ -72,6 +73,10 @@ export default function App() {
           <DrunkardPNP />
         </Route>
 
+        <Route path="/volleyball/pnp">
+          <VolleyballPnp />
+        </Route>
+
         <Route>
           <link
             rel="stylesheet"
@@ -119,6 +124,9 @@ export default function App() {
                   </li>
                   <li>
                     <Link to="/drunkard/pnp">喝酒海陆空pnp</Link>
+                  </li>
+                  <li>
+                    <Link to="/volleyball/pnp">排球pnp</Link>
                   </li>
                 </ul>
               </div>
