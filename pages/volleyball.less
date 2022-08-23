@@ -1,11 +1,65 @@
-.volleyball-card.concept {
-  padding: 1mm;
-  img {
-    width: 54mm;
+.volleyball {
+  .hits {
+    transform: translate(1mm, 1mm);
+  }
+  .catches {
+    transform: translate(1mm, 13mm);
   }
 
-  background-color: #444444;
-  &.back {
-    background-color: white;
+  .layer {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+  }
+  .illust {
+    width: 54mm;
+    height: 86mm;
+    object-fit: contain;
+    margin: 1mm;
+  }
+  .playfield {
+    width: 12mm;
+    height: 12mm;
+    box-shadow: inset 0 0 0.5mm rgba(0, 0, 0, 0.5);
+
+    > .ball,
+    > .ballgroup {
+      &:nth-child(1) {
+        transform: translate(3mm, 3mm);
+      }
+      &:nth-child(2) {
+        transform: translate(9mm, 3mm);
+      }
+      &:nth-child(3) {
+        transform: translate(3mm, 9mm);
+      }
+      &:nth-child(4) {
+        transform: translate(9mm, 9mm);
+      }
+    }
+
+    .ball {
+      r: 1.5mm;
+      &.class-0 {
+        display: none;
+      }
+      &.class-1 {
+        fill: dodgerblue;
+      }
+      &.class-2 {
+        fill: gold;
+      }
+      &.class-3 {
+        fill: crimson;
+      }
+    }
+
+    .ballgroup {
+      .ball:nth-child(1) {
+        transform: translate(1mm, 0);
+      }
+    }
   }
 }
