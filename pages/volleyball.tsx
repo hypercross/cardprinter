@@ -5,13 +5,13 @@ import { createTTSLayout, el, Pages, PnP8654 } from '../layout';
 import './volleyball.less';
 
 export function VolleyballTTS() {
-  const cards = useVolleyballCards();
+  const cards = useVolleyballCardsWithBack();
 
   return (
-    <Pages layout={TTS} item={VolleyballCard} group={20} content={cards} />
+    <Pages layout={TTS} item={VolleyballCard} group={12} content={cards} />
   );
 }
-const TTS = createTTSLayout(10, 2, 56, 88);
+const TTS = createTTSLayout(6, 2, 56, 88);
 
 export function VolleyballPnP() {
   const cards = useVolleyballCards();
@@ -84,7 +84,14 @@ function SummaryCard(props: any) {
       </Layer>
     );
   });
-  return <Frame>{hints}</Frame>;
+  return (
+    <Frame>
+      {hints}
+      <Layer className="name">
+        <Text>{props.Name}</Text>
+      </Layer>
+    </Frame>
+  );
 }
 
 function Field(props: { code: string; all?: boolean }) {
@@ -129,6 +136,26 @@ function useVolleyballCards() {
   return suspend(loadVolleyballCards, []);
 }
 
+function useVolleyballCardsWithBack() {
+  const cards = useVolleyballCards();
+  return React.useMemo(() => {
+    const summaries = cards.filter((one) => one.variant === 'summary');
+    const data = [
+      ...cards,
+      ...summaries
+        .map((one) => {
+          return [
+            { ...one, side: 'back' },
+            { ...one, variant: 'play', side: 'back' },
+          ];
+        })
+        .flat(),
+    ];
+    sort(data);
+    return data;
+  }, [cards]);
+}
+
 async function loadVolleyballCards() {
   const cards = await loadNotionDB(
     'https://nine-newsprint-c9d.notion.site/c76abae545e04b09aed98e5c7ac9aba6?v=3f03e3dc31cd440b972f937f56e000f6'
@@ -165,5 +192,13 @@ async function loadVolleyballCards() {
   }
 
   const data = leftjoin('', cards, extra);
+  sort(data);
   return data;
+}
+
+function sort(data: any[]) {
+  data.sort((a, b) => {
+    if (a.Name !== b.Name) return a.Name.localeCompare(b.Name);
+    return a.variant.localeCompare(b.variant);
+  });
 }
