@@ -70,7 +70,7 @@ function SummaryCard(props: any) {
     const [_, f, p, d] = key.match(/(\w)-(\d)-(\d)/);
     const n = summary[key];
     return (
-      <Layer className={`summary field-${f} pos-${p} class-${d}`}>
+      <Layer key={key} className={`summary field-${f} pos-${p} class-${d}`}>
         <Text>{n}</Text>
       </Layer>
     );
