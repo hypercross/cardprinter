@@ -26,31 +26,35 @@
     font-family: Xiquezhaopaiti;
   }
   .layer.summary {
+    font-size: 6mm;
+    font-weight: bold;
+    font-family: sans-serif;
+
     --x: calc(var(--t-pos-x) + var(--t-class));
     --y: calc(var(--t-pos-y) + var(--t-field));
     transform: translate(var(--x), var(--y));
 
     &.field-h {
-      --t-field: calc(1mm - 1mm);
+      --t-field: 20mm;
     }
     &.field-c {
-      --t-field: 30mm;
+      --t-field: 50mm;
     }
 
-    --t-pos-x: 12mm;
-    --t-pos-y: 12mm;
+    --t-pos-x: 6mm;
+    --t-pos-y: 6mm;
     &.pos-0,
     &.pos-2 {
-      --t-pos-x: -12mm;
+      --t-pos-x: -6mm;
     }
     &.pos-0,
     &.pos-1 {
-      --t-pos-y: -12mm;
+      --t-pos-y: -6mm;
     }
 
     --t-class: calc(1mm - 1mm);
+
     color: gold;
-    font-family: sans-serif;
     &.class-0 {
       display: none;
     }

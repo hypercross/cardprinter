@@ -138,13 +138,17 @@ async function loadVolleyballCards() {
       for (let i = 0; i < 12; i++) {
         const d = `${1 + Math.floor(i / 4)}`;
         const p = i % 4;
+
+        let key = `h-${p}-${d}`;
+        hits[key] = hits[key] || 0;
         if (other.Hits[p] === d) {
-          const key = `h-${p}-${d}`;
-          hits[key] = (hits[key] || 0) + 1;
+          hits[key]++;
         }
+
+        key = `h-${p}-${d}`;
+        hits[key] = hits[key] || 0;
         if (other.Catches[p] === d) {
-          const key = `c-${p}-${d}`;
-          hits[key] = (hits[key] || 0) + 1;
+          hits[key]++;
         }
       }
       card.summary = hits as any;
