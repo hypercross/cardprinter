@@ -43,7 +43,7 @@ function PlayCard(props: any) {
   }
   return (
     <Frame>
-      <Layer className="illustration">
+      <Layer className="play illustration">
         <Illust src={props.Illustration} />
       </Layer>
       <Layer className="hits">
