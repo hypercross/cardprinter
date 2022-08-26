@@ -86,6 +86,12 @@ function SummaryCard(props: any) {
   });
   return (
     <Frame>
+      <Layer className="hit-hint">
+        <Text>击球牌张数</Text>
+      </Layer>
+      <Layer className="catch-hint">
+        <Text>可接球牌张数</Text>
+      </Layer>
       {hints}
       <Layer className="name">
         <Text>{props.Name}</Text>
