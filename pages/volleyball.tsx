@@ -183,7 +183,7 @@ async function loadVolleyballCards() {
 
         key = `c-${p}-${d}`;
         hits[key] = hits[key] || 0;
-        if (other.Catches[p] === d) {
+        if (other.Catches[p] >= d) {
           hits[key]++;
         }
       }
