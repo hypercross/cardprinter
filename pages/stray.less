@@ -5,7 +5,10 @@
   justify-content: center;
   align-items: center;
 
-  &.地点 .layer.act {
+  &:not(.front) .layer.front-only,
+  &:not(.back) .layer.back-only,
+  &:not(.居民) .layer.居民-only,
+  &:not(.遭遇) .layer.遭遇-only {
     display: none;
   }
 
@@ -18,7 +21,8 @@
     top: 5mm;
   }
   .layer.var {
-    transform: translate(0, 2em);
+    transform: translate(1em, 1em);
+    color: darkgrey;
   }
 
   .layer.loc,
@@ -29,6 +33,14 @@
       width: 100%;
       height: 100%;
       object-fit: contain;
+    }
+  }
+
+  .layer.back {
+    img {
+      object-fit: contain;
+      width: 100%;
+      height: 100%;
     }
   }
 }

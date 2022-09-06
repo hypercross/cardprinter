@@ -4,28 +4,58 @@ import { loadCSV, loadNotionDB } from '../data';
 import { createTTSLayout, el, Pages } from '../layout';
 import './stray.less';
 
-const Layout = createTTSLayout(7, 11, 88, 56);
+const Layout = createTTSLayout(8, 10, 88, 56);
 export function StrayTTS() {
   const cards = suspend(loadStray, ['stray']);
+  const withBack = React.useMemo(() => {
+    return [{ ...cards[0], side: 'back' }, ...cards];
+  }, [cards]);
 
-  return <Pages layout={Layout} content={cards} group={77} item={StrayCard} />;
+  return (
+    <Pages layout={Layout} content={withBack} group={80} item={StrayCard} />
+  );
 }
 
-function StrayCard(props: { item: StrayCardData; side: string }) {
-  console.log(props);
+function StrayCard(props: { item: StrayCardData }) {
+  const { item } = props;
+  const {
+    Name,
+    variant,
+    side,
+    images,
+    Location,
+    Action,
+    Hearts,
+    Scores,
+    Food,
+  } = item;
   return (
-    <Frame className={props.item.variant}>
-      <Layer className="name">
-        <Text>{props.item.Name || `（${props.item.variant}）`}</Text>
+    <Frame className={`${variant} ${side || 'front'}`}>
+      <Layer className="name front-only">
+        <Text>{Name || `（${variant}）`}</Text>
       </Layer>
-      <Layer className="var">
-        <Text>{props.item.variant}</Text>
+      <Layer className="var front-only">
+        <Text>{variant}</Text>
       </Layer>
-      <Layer className="loc">
-        <Illust src={props.item.images[props.item.Location]} />
+      <Layer className="loc front-only">
+        <Illust src={images[Location]} />
       </Layer>
-      <Layer className="act">
-        <Illust src={props.item.images[props.item.Action]} />
+      <Layer className="act front-only 遭遇-only">
+        <Illust src={images[Action]} />
+      </Layer>
+      <Layer className="back back-only">
+        <Illust src={images.卡背概念2} />
+      </Layer>
+      <Layer className="stats front-only 居民-only">
+        <div>
+          <Clone num={Hearts}>💕</Clone>
+        </div>
+        <div>
+          <Clone num={Scores}>⭐️</Clone>
+        </div>
+        <div>
+          <Clone num={Food}>🐟</Clone>
+        </div>
       </Layer>
     </Frame>
   );
@@ -42,6 +72,9 @@ interface StrayCardData {
   Count: string;
   Action: string;
   Location: string;
+  Hearts: string;
+  Scores: string;
+  Food: string;
   images: { [key: string]: string };
 }
 
@@ -74,4 +107,14 @@ async function loadStray() {
   });
 
   return sheetData;
+}
+
+function Clone(props: { children: React.ReactNode; num: string }) {
+  const { children, num } = props;
+  const count = parseInt(num) || 0;
+  const elems = [] as React.ReactNode[];
+  for (let i = 0; i < count; i++) {
+    elems.push(<React.Fragment key={i}>{children}</React.Fragment>);
+  }
+  return <React.Fragment children={elems} />;
 }
