@@ -13,6 +13,7 @@ import {
   NoodleRealmPnPReprint,
   NoodleRealmPnP豆腐节,
 } from './pages/noddle-realms';
+import { StrayTTS } from './pages/stray';
 import { VolleyballPnP, VolleyballTTS } from './pages/volleyball';
 
 export default function App() {
@@ -80,6 +81,10 @@ export default function App() {
           <VolleyballTTS />
         </Route>
 
+        <Route path="/stray/tts">
+          <StrayTTS />
+        </Route>
+
         <Route>
           <link
             rel="stylesheet"
@@ -89,6 +94,9 @@ export default function App() {
             <div className="container content">
               <div className="menu">
                 <ul className="menu-list">
+                  <li>
+                    <Link to="/stray/tts">流浪猫不回家</Link>
+                  </li>
                   <li>
                     <Link to="/mfgc/pnp">猫妃狗臣pnp</Link>
                   </li>
