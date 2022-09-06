@@ -25,7 +25,7 @@ function StrayCard(props: { item: StrayCardData; side: string }) {
         <Illust src={props.item.images[props.item.Location]} />
       </Layer>
       <Layer className="act">
-        <Text>{props.item.Action}</Text>
+        <Illust src={props.item.images[props.item.Action]} />
       </Layer>
     </Frame>
   );
