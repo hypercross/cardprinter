@@ -4,32 +4,29 @@ import { loadCSV, loadNotionDB } from '../data';
 import { createTTSLayout, el, Pages } from '../layout';
 import './stray.less';
 
-const Layout = createTTSLayout(5, 15, 88, 56);
+const Layout = createTTSLayout(7, 11, 88, 56);
 export function StrayTTS() {
   const cards = suspend(loadStray, ['stray']);
 
-  return <Pages layout={Layout} content={cards} group={75} item={StrayCard} />;
+  return <Pages layout={Layout} content={cards} group={77} item={StrayCard} />;
 }
 
 function StrayCard(props: { item: StrayCardData; side: string }) {
+  console.log(props);
   return (
-    <Frame>
+    <Frame className={props.item.variant}>
       <Layer className="name">
         <Text>{props.item.Name || `（${props.item.variant}）`}</Text>
       </Layer>
       <Layer className="var">
         <Text>{props.item.variant}</Text>
       </Layer>
-      {props.item.Location && (
-        <Layer className="loc">
-          <Text>{props.item.Location}</Text>
-        </Layer>
-      )}
-      {props.item.Action && (
-        <Layer className="act">
-          <Text>{props.item.Action}</Text>
-        </Layer>
-      )}
+      <Layer className="loc">
+        <Illust src={props.item.images[props.item.Location]} />
+      </Layer>
+      <Layer className="act">
+        <Text>{props.item.Action}</Text>
+      </Layer>
     </Frame>
   );
 }
