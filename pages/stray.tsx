@@ -4,7 +4,7 @@ import { loadCSV, loadNotionDB } from '../data';
 import { createTTSLayout, el, Pages } from '../layout';
 import './stray.less';
 
-const Layout = createTTSLayout(5, 25, 88, 56);
+const Layout = createTTSLayout(5, 15, 88, 56);
 export function StrayTTS() {
   const cards = suspend(loadStray, ['stray']);
 
@@ -49,9 +49,19 @@ interface StrayCardData {
 }
 
 async function loadStray() {
-  const sheetData: StrayCardData[] = await loadCSV(
-    'https://docs.google.com/spreadsheets/d/e/2PACX-1vS3efOrCMC4iDKjkdi4HzsiqktSPcTR7ztbeeRxznaYL7fGfFNztqntW0esZP7-tMrij3PWDcOmSZqy/pub?gid=0&single=true&output=csv'
-  );
+  const sheetData: StrayCardData[] = (
+    await loadCSV(
+      'https://docs.google.com/spreadsheets/d/e/2PACX-1vS3efOrCMC4iDKjkdi4HzsiqktSPcTR7ztbeeRxznaYL7fGfFNztqntW0esZP7-tMrij3PWDcOmSZqy/pub?gid=0&single=true&output=csv'
+    )
+  )
+    .map((one) => {
+      const items = [] as typeof one[];
+      for (let i = parseInt(one.Count); i > 0; i--) {
+        items.push(one);
+      }
+      return items;
+    })
+    .flat();
 
   const imageItems = await loadNotionDB<{ Name: string; Image: string }>(
     'https://nine-newsprint-c9d.notion.site/6bc0a78bcc39488c99cc94ee64fa8d19?v=9ccddb1cbfb047868c04f300306199fe'
