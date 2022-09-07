@@ -4,7 +4,7 @@ import { loadCSV, loadNotionDB } from '../data';
 import { createTTSLayout, el, Pages } from '../layout';
 import './stray.less';
 
-const Layout = createTTSLayout(8, 10, 88, 56);
+const Layout = createTTSLayout(15, 6, 56, 88);
 export function StrayTTS() {
   const cards = suspend(loadStray, ['stray']);
   const withBack = React.useMemo(() => {
@@ -12,7 +12,7 @@ export function StrayTTS() {
   }, [cards]);
 
   return (
-    <Pages layout={Layout} content={withBack} group={80} item={StrayCard} />
+    <Pages layout={Layout} content={withBack} group={90} item={StrayCard} />
   );
 }
 
@@ -44,7 +44,7 @@ function StrayCard(props: { item: StrayCardData }) {
         <Illust src={images[Action]} />
       </Layer>
       <Layer className="back back-only">
-        <Illust src={images.卡背概念2} />
+        <Illust src={images.卡背概念} />
       </Layer>
       <Layer className="stats front-only 居民-only">
         <div>
@@ -93,13 +93,17 @@ async function loadStray() {
     })
     .flat();
 
-  const imageItems = await loadNotionDB<{ Name: string; Image: string }>(
+  const imageItems = await loadNotionDB<{
+    Name: string;
+    Image: string | null;
+    Candidate1: string;
+  }>(
     'https://nine-newsprint-c9d.notion.site/6bc0a78bcc39488c99cc94ee64fa8d19?v=9ccddb1cbfb047868c04f300306199fe'
   );
 
   const imageMap = {};
   imageItems.forEach((item) => {
-    imageMap[item.Name] = item.Image;
+    imageMap[item.Name] = item.Image || item.Candidate1;
   });
 
   sheetData.forEach((item) => {
