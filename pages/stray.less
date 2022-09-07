@@ -2,10 +2,10 @@
   border: 2mm solid rgba(0, 0, 0, 0.1);
   box-sizing: border-box;
   position: relative;
-  padding: 3mm;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+
+  .layer {
+    position: absolute;
+  }
 
   &:not(.front) .layer.front-only,
   &:not(.back) .layer.back-only,
@@ -18,25 +18,29 @@
   .layer.var {
     font-family: Xiquezhaopaiti;
     font-weight: bold;
-    position: absolute;
-    left: 5mm;
-    top: 0mm;
+    left: 1mm;
+    top: 1mm;
+    .text {
+      margin: 0;
+    }
   }
   .layer.var {
-    transform: translate(0em, 1em);
+    transform: translate(0em, 1.3em);
     color: darkgrey;
   }
 
   .layer.loc,
   .layer.act {
-    position: absolute;
-    min-width: 50mm;
-    min-height: 50mm;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
     img {
       width: 100%;
       height: 100%;
       object-fit: contain;
     }
+    transform: translate(0, -3mm);
   }
 
   .layer.back {
@@ -50,7 +54,13 @@
   }
 
   .layer.stats {
-    padding: 1em;
-    width: 6em;
+    width: 8em;
+    right: 1mm;
+    top: 1mm;
+    text-align: right;
+  }
+
+  &.居民 .layer.loc {
+    transform: translate(0, 2mm);
   }
 }
