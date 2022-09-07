@@ -45,7 +45,7 @@ function StrayCard(props: { item: StrayCardData }) {
         <Illust src={images[Action]} />
       </Layer>
       <Layer className="rules front-only 遭遇-only">
-        <Text>{rules}</Text>
+        <Text>{Rules}</Text>
       </Layer>
       <Layer className="back back-only">
         <Illust src={images.卡背概念} />
