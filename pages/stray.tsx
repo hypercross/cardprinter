@@ -28,6 +28,7 @@ function StrayCard(props: { item: StrayCardData }) {
     Hearts,
     Scores,
     Food,
+    Rules,
   } = item;
   return (
     <Frame className={`${variant} ${side || 'front'}`}>
@@ -42,6 +43,9 @@ function StrayCard(props: { item: StrayCardData }) {
       </Layer>
       <Layer className="act front-only 遭遇-only">
         <Illust src={images[Action]} />
+      </Layer>
+      <Layer className="rules front-only 遭遇-only">
+        <Text>{rules}</Text>
       </Layer>
       <Layer className="back back-only">
         <Illust src={images.卡背概念} />
@@ -75,6 +79,7 @@ interface StrayCardData {
   Hearts: string;
   Scores: string;
   Food: string;
+  Rules: string;
   images: { [key: string]: string };
 }
 
