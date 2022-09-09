@@ -41,10 +41,10 @@ function StrayCard(props: { item: StrayCardData }) {
       <Layer className="loc front-only">
         <Illust src={images[Location]} />
       </Layer>
-      <Layer className="act front-only 遭遇-only">
+      <Layer className="act front-only 行动-only">
         <Illust src={images[Action]} />
       </Layer>
-      <Layer className="rules front-only 遭遇-only">
+      <Layer className="rules front-only 行动-only">
         <Text>{Rules}</Text>
       </Layer>
       <Layer className="back back-only">
@@ -86,7 +86,7 @@ interface StrayCardData {
 async function loadStray() {
   const sheetData: StrayCardData[] = (
     await loadCSV(
-      'https://docs.google.com/spreadsheets/d/e/2PACX-1vS3efOrCMC4iDKjkdi4HzsiqktSPcTR7ztbeeRxznaYL7fGfFNztqntW0esZP7-tMrij3PWDcOmSZqy/pub?gid=0&single=true&output=csv'
+      'https://docs.google.com/spreadsheets/d/e/2PACX-1vS3efOrCMC4iDKjkdi4HzsiqktSPcTR7ztbeeRxznaYL7fGfFNztqntW0esZP7-tMrij3PWDcOmSZqy/pub?gid=866881921&single=true&output=csv'
     )
   )
     .map((one) => {
