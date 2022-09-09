@@ -1,4 +1,5 @@
 import React = require('react');
+import { ReactMarkdown } from 'react-markdown/lib/react-markdown';
 import { suspend } from 'suspend-react';
 import { loadCSV, loadNotionDB } from '../data';
 import { createTTSLayout, el, Pages } from '../layout';
@@ -43,9 +44,12 @@ function StrayCard(props: { item: StrayCardData }) {
       </Layer>
       <Layer className="act front-only 行动-only">
         <Illust src={images[Action]} />
+        <Text>{Action}</Text>
       </Layer>
       <Layer className="rules front-only 行动-only">
-        <Text>{Rules}</Text>
+        <Text>
+          <ReactMarkdown>{Rules}</ReactMarkdown>
+        </Text>
       </Layer>
       <Layer className="back back-only">
         <Illust src={images.卡背概念} />
@@ -55,10 +59,7 @@ function StrayCard(props: { item: StrayCardData }) {
           <Clone num={Hearts}>💕</Clone>
         </div>
         <div>
-          <Clone num={Scores}>⭐️</Clone>
-        </div>
-        <div>
-          <Clone num={Food}>🐟</Clone>
+          <Clone num={Scores}>🐟</Clone>
         </div>
       </Layer>
     </Frame>
