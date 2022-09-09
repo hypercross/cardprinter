@@ -9,7 +9,11 @@ const Layout = createTTSLayout(15, 6, 56, 88);
 export function StrayTTS() {
   const cards = suspend(loadStray, ['stray']);
   const withBack = React.useMemo(() => {
-    return [{ ...cards[0], side: 'back' }, ...cards];
+    const backs = {} as { [key: string]: StrayCardData };
+    cards.forEach((card) => {
+      if (!backs[card.variant]) backs[card.variant] = { ...card, side: 'back' };
+    });
+    return [...Object.keys(backs).map((key) => backs[key]), ...cards];
   }, [cards]);
 
   return (
@@ -52,7 +56,7 @@ function StrayCard(props: { item: StrayCardData }) {
         </Text>
       </Layer>
       <Layer className="back back-only">
-        <Illust src={images.卡背概念} />
+        <Illust src={images.卡背概念3} />
       </Layer>
       <Layer className="stats front-only 居民-only">
         <div>
