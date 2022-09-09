@@ -5,7 +5,7 @@ import { loadCSV, loadNotionDB } from '../data';
 import { createTTSLayout, el, Pages } from '../layout';
 import './stray.less';
 
-const Layout = createTTSLayout(15, 6, 56, 88);
+const Layout = createTTSLayout(16, 6, 56, 88);
 export function StrayTTS() {
   const cards = suspend(loadStray, ['stray']);
   const withBack = React.useMemo(() => {
@@ -17,7 +17,7 @@ export function StrayTTS() {
   }, [cards]);
 
   return (
-    <Pages layout={Layout} content={withBack} group={90} item={StrayCard} />
+    <Pages layout={Layout} content={withBack} group={96} item={StrayCard} />
   );
 }
 
