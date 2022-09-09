@@ -59,7 +59,7 @@ function StrayCard(props: { item: StrayCardData }) {
         <Illust src={images.地点卡背概念1} />
       </Layer>
       <Layer className="back back-only 行动-only">
-        <Illust src={images.卡背概念1} />
+        <Illust src={images.卡背概念3} />
       </Layer>
       <Layer className="back back-only 居民-only">
         <Illust src={images.居民卡背概念1} />
