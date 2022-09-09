@@ -55,8 +55,14 @@ function StrayCard(props: { item: StrayCardData }) {
           <ReactMarkdown>{Rules}</ReactMarkdown>
         </Text>
       </Layer>
-      <Layer className="back back-only">
-        <Illust src={images.卡背概念3} />
+      <Layer className="back back-only 地点-only">
+        <Illust src={images.地点卡背概念1} />
+      </Layer>
+      <Layer className="back back-only 行动-only">
+        <Illust src={images.卡背概念1} />
+      </Layer>
+      <Layer className="back back-only 居民-only">
+        <Illust src={images.居民卡背概念1} />
       </Layer>
       <Layer className="stats front-only 居民-only">
         <div>
